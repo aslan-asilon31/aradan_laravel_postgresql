@@ -1,0 +1,67 @@
+======= implemented task schedule
+Some common use cases for scheduled tasks:
+
+Daily/Weekly/Monthly summary reports
+Garbage collection
+Import / Export processes
+Notifying customers of upcoming expirations (account, credit cards, etc)
+
+
+========= for visitor and member activity log
+https://www.itsolutionstuff.com/post/custom-user-log-activity-in-laravel-5-app-exampleexample.html
+
+
+penambahan fitur product activity log pada aradan tuk memudahkan staff Audit dalam melacak dan memonitor perubahan produk , menganalisis data (tren, pola, dll), keamanan dan kepatuhan .
+
+
+
+
+
+============== Member Type
+Member Biasa/regular member:
+Diskon produk tertentu (misalnya, 10% off pada kategori tertentu).
+Diskon ulang tahun (misalnya, 20% off saat ulang tahun member).
+
+Member Silver:
+Diskon produk secara keseluruhan (misalnya, 15% off untuk semua produk).
+Diskon produk eksklusif (misalnya, 20% off pada produk-produk terpilih).
+
+Member Gold:
+Diskon produk lebih besar (misalnya, 20% off untuk semua produk).
+Diskon produk eksklusif (misalnya, 25% off pada produk-produk terpilih).
+Pengiriman gratis untuk semua pesanan.
+
+Member Platinum:
+Diskon produk yang signifikan (misalnya, 30% off untuk semua produk).
+Diskon produk eksklusif (misalnya, 35% off pada produk-produk terpilih).
+Pengiriman gratis untuk semua pesanan.
+Layanan pelanggan prioritas.
+Akses ke penawaran khusus dan pre-sale.
+
+Member VIP:
+Diskon produk terbesar (misalnya, 40% off untuk semua produk).
+Diskon produk eksklusif (misalnya, 50% off pada produk-produk terpilih).
+Pengiriman gratis untuk semua pesanan.
+Layanan pelanggan prioritas.
+Akses ke penawaran khusus dan pre-sale.
+Hadiah atau bonus tambahan dengan pembelian tertentu.
+
+
+=================Live chat
+Live Chat using https://dashboard.tawk.to/?lang=en#/chat
+
+========= Accounting
+---------source
+source description account :https://www.zenius.net/blog/penggolongan-akun-dalam-akuntansi
+========= End Accounting
+
+============= features 
+- Roles and Permissions using Spatie
+- admin page using AdminLTE jeroenoten
+- Payment Gateway using Midtrans
+- Tables Using YajraDatatable
+- Live Chat using tawk
+- Roles and Permissions using Spatie
+- Export Import (Excel/PDF/CSV) using laravel excel
+- bulk delete
+- last seen user
