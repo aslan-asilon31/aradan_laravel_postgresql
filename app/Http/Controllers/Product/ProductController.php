@@ -196,6 +196,14 @@ class ProductController extends Controller
     public function __construct(ProductService $productService)
     {
         $this->productService = $productService;
+
+        $this->middleware('permission:product-list|product-create|product-edit|product-delete', ['only' => ['index','show']]);
+
+        $this->middleware('permission:product-create', ['only' => ['create','store']]);
+
+        $this->middleware('permission:product-edit', ['only' => ['edit','update']]);
+
+        $this->middleware('permission:product-delete', ['only' => ['destroy']]);
     }
 
     public function index(Request $request)
@@ -206,7 +214,10 @@ class ProductController extends Controller
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
-                    $actionBtn = '<a href="javascript:void(0)" class="detail btn btn-info btn-sm"><i class="fa fa-eye"></i></a><a href="javascript:void(0)" class="edit btn btn-success btn-sm"> <i class="fa fa-edit"></i> </a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm"><i class="fa fa-trash"></i></a> ';
+                    $actionBtn = '<a href="javascript:void(0)" class="detail btn btn-info btn-sm"><i class="fa fa-eye"></i></a>';
+                    $actionBtn .= '<a href="javascript:void(0)" class="edit btn btn-success btn-sm"> <i class="fa fa-edit"></i> </a>';
+                    $actionBtn .= '<a href="javascript:void(0)" class="delete btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>';
+                    // $actionBtn .= '<a href="'.route('products.create').'" class="create btn btn-primary btn-sm"><i class="fa fa-plus"></i> Create Product</a>'; // Add the Create Product button
                     return $actionBtn;
                 })
                 ->addColumn('category_name', function ($product) {
@@ -307,6 +318,11 @@ class ProductController extends Controller
     {
         $product = $this->productService->getProductById($id);
         // ...
+    }
+
+    public function create()
+    {
+        return view('products.create');
     }
 
     public function store(Request $request)

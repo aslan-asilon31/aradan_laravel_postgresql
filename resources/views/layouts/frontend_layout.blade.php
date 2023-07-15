@@ -14,6 +14,8 @@
     <link rel="icon" type="image/png" href="{{ asset('assets/frontend/img/favicon.png') }}" />
     <title>Aradan</title>
 
+    
+
     @yield('css')
 
     <!-- Fonts  -->
@@ -251,6 +253,25 @@
                 <span></span>
                 <span></span>
               </button>
+
+              
+              {{-- dropdown image  --}}
+              <div class="btn-group">
+                <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <img src="https://i.pravatar.cc/85" alt="Profile Image" class="profile-image" style="border-radius: 50%; width:40px; height:40px;">
+                </button>
+                <ul class="dropdown-menu">
+                  <!-- Dropdown menu items -->
+                  <li><a class="dropdown-item" href="#">View Profile</a></li>
+                  <li><a class="dropdown-item" href="#">Edit Profile</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Logout</a></li>
+                </ul>
+              </div>
+              
+              {{-- End dropdown image  --}}
+
+
             </div>
           </div>
         </nav>
@@ -468,5 +489,11 @@
 
     <!-- Theme JS -->
     <script src="{{ asset('assets/frontend/js/app.js') }}"></script>
+
+    <script>
+      // Dropdown image 
+
+      // End ropdown image 
+    </script>
   </body>
 </html>

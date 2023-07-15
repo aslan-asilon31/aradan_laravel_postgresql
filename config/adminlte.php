@@ -320,21 +320,25 @@ return [
             'text'        => 'Product',
             'url'         => 'product',
             'icon' => 'fas fa-fw fa-box',
+            'can'   => 'product-list'
         ],
         [
             'text' => 'category',
             'url'  => 'category',
             'icon' => 'fas fa-fw fa-boxes',
+            'can'   => 'category-list'
         ],
         [
             'text' => 'order',
-            'url'  => '/order',
+            'url'  => '/orders',
             'icon' => 'fa fa-fw fa-money-bill',
+            'can'   => 'product-list'
         ],
         [
             'text' => 'report',
             'url'  => 'report',
             'icon' => 'fas fa-fw fa-file',
+            'can'   => 'report-list'
         ],
         ['header' => 'account_settings'],
         [
@@ -354,13 +358,16 @@ return [
                 [
                     'text' => 'role setting',
                     'url'  => '#',
+                    'can'   => 'permission-list'
                 ],
                 [
                     'text' => 'permission setting',
                     'url'  => '#',
+                    'can'   => 'permission-list'
                 ],
                
             ],
+            'can'   => 'role-list'
         ],
         ['header' => 'Config'],
         [

@@ -3,155 +3,84 @@
 @section('title', 'Order')
 
 @section('content_header')
-    <h1>Orders</h1>
+    <h1>Order</h1>
 @stop
 
 @section('content')
 
-
-<div class="col-lg-12">
-    <div class="row">
-        <div class="col-md-12">
-            {{-- success order  --}}
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Waiting for Payment</h3>
-                </div>
-                <!-- /.card-header -->
-                <div class="card-body">
-                    <table id="example1" class="table table-bordered table-striped">
-                    <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Image</th>
-                        <th>Action</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>Trident</td>
-                        <td>Win 95+</td>
-                        <td>
-                            <a href=""> <u>Detail</u> </a> | 
-                            <a href=""> <u>Print</u> </a> |
-                            <a href=""> <u>Delete</u> </a>
-                        </td>
-                    </tr>
-                    
-                    </tbody>
-                    <tfoot>
-                    <tr>
-                        <th>Name</th>
-                        <th>Image</th>
-                        <th>Action</th>
-                    </tr>
-                    </tfoot>
-                    </table>
-                </div>
-                <!-- /.card-body -->
+<div class="card">
+    <div class="card-header">
+        <div class="card-tools">
+            <div class="btn-group">
+                <input type="file" id="fileUploader" style="display: none;">
             </div>
-            <!-- /.card -->
+            <button type="button" class="btn btn-lg btn-danger" style="" data-toggle="tooltip" title="Export PDF" onclick="exportData('pdf')">
+                <i class="fas fa-file-pdf" ></i>
+            </button>
+            <button type="button" class="btn btn-lg btn-warning"  data-toggle="tooltip" title="Export Excel" onclick="exportData('excel')">
+                <i class="fas fa-file-excel" style="color:white;"></i>
+            </button>
+            <button type="button" class="btn btn-lg btn-info" data-toggle="tooltip" title="Export CSV" onclick="exportData('csv')">
+                <i class="fas fa-file-csv"></i>
+            </button>
         </div>
     </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered yajra-datatable">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Payment ID</th>
+                        <th>Order Code</th>
+                        <th>Grant Total</th>
+                        <th>Status</th>
+                        <th>Account Bank</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- /.card-body -->
 </div>
-
-<div class="col-lg-12 d-flex">
-
-        <div class="col-md-6">
-            {{-- success order  --}}
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Success Order</h3>
-                </div>
-                <!-- /.card-header -->
-                <div class="card-body">
-                    <table id="example1" class="table table-bordered table-striped">
-                    <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Image</th>
-                        <th>Action</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>Trident</td>
-                        <td>Win 95+</td>
-                        <td>
-                            <a href=""> <u>Detail</u> </a> | 
-                            <a href=""> <u>Print</u> </a> |
-                            <a href=""> <u>Delete</u> </a>
-                        </td>
-                    </tr>
-                    
-                    </tbody>
-                    <tfoot>
-                    <tr>
-                        <th>Name</th>
-                        <th>Image</th>
-                        <th>Action</th>
-                    </tr>
-                    </tfoot>
-                    </table>
-                </div>
-                <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-        </div>
-    
-        <div class="col-md-6">
-            {{-- failed order  --}}
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Failed Order</h3>
-                </div>
-                <!-- /.card-header -->
-                <div class="card-body">
-                    <table id="example1" class="table table-bordered table-striped">
-                    <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Image</th>
-                        <th>Action</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>Trident</td>
-                        <td>Win 95+</td>
-                        <td>
-                            <a href=""> <u>Detail</u> </a> |
-                            <a href=""> <u>Delete</u> </a> 
-                        </td>
-                    </tr>
-                    
-                    </tbody>
-                    <tfoot>
-                    <tr>
-                        <th>Name</th>
-                        <th>Image</th>
-                        <th>Action</th>
-                    </tr>
-                    </tfoot>
-                    </table>
-                </div>
-                <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-            </div>
-        </div>
-
-
-
-
-
+<!-- /.card -->
 
 @stop
 
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
+    <link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" rel="stylesheet">
 @stop
 
 @section('js')
-    <script> console.log('Hi!'); </script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var table = $('.yajra-datatable').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: "{{ url('orders') }}",
+            columns: [
+                {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+                {data: 'payment_id', name: 'payment_id'},
+                {data: 'order_code', name: 'order_code'},
+                {data: 'grant_total', name: 'grant_total'},
+                {data: 'status', name: 'status'},
+                {data: 'account_bank', name: 'account_bank'},
+                {
+                    data: 'action',
+                    name: 'action',
+                    orderable: true,
+                    searchable: true
+                },
+            ]
+        });
+    });
+</script>
 @stop

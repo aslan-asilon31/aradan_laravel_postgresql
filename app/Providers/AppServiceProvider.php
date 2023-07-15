@@ -5,6 +5,10 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Repositories\ProductRepositoryInterface;
 use App\Repositories\ProductRepositoryEloquent;
+use App\Repositories\Order\OrderRepositoryInterface;
+use App\Repositories\Order\OrderRepositoryEloquent;
+use App\Repositories\Payment\PaymentRepositoryInterface;
+use App\Repositories\Payment\PaymentRepositoryEloquent;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -15,7 +19,15 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->bind(
             ProductRepositoryInterface::class, 
-            ProductRepositoryEloquent::class
+            ProductRepositoryEloquent::class,
+        );
+        $this->app->bind(
+            OrderRepositoryInterface::class, 
+            OrderRepositoryEloquent::class,
+        );
+        $this->app->bind(
+            PaymentRepositoryInterface::class, 
+            PaymentRepositoryEloquent::class,
         );
     }
 

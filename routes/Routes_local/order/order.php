@@ -15,4 +15,10 @@ use App\Http\Controllers\Order\OrderController;
 |
 */
 
-Route::get('/order', [OrderController::class, 'index']);
+Route::group(['middleware' => ['auth']], function() {
+
+
+    Route::get('/orders', [OrderController::class, 'index']);
+    Route::get('/orders/{order}', [OrderController::class, 'show'])->name('orders.show');
+
+});

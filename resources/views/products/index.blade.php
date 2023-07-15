@@ -11,21 +11,24 @@
 <div class="card">
     <div class="card-header">
         <div class="card-tools">
+            @can('product-create')
+            <a href="{{ route('products.create') }}" class="create btn btn-primary btn-sm"><i class="fa fa-plus"></i> Create Product</a>
+            @endcan
             <div class="btn-group">
                 <button type="button" class="btn btn-lg btn-secondary" data-toggle="tooltip" title="Upload File" onclick="openFileUploader()">
                     <i class="fas fa-upload"></i>
                 </button>
                 <input type="file" id="fileUploader" style="display: none;">
             </div>
-            <button type="button" class="btn btn-lg btn-danger" style="" data-toggle="tooltip" title="Export PDF" onclick="exportData('pdf')">
-                <i class="fas fa-file-pdf" ></i>
-            </button>
-            <button type="button" class="btn btn-lg btn-warning"  data-toggle="tooltip" title="Export Excel" onclick="exportData('excel')">
-                <i class="fas fa-file-excel" style="color:white;"></i>
-            </button>
-            <button type="button" class="btn btn-lg btn-info" data-toggle="tooltip" title="Export CSV" onclick="exportData('csv')">
-                <i class="fas fa-file-csv"></i>
-            </button>
+                <button type="button" class="btn btn-lg btn-danger" style="" data-toggle="tooltip" title="Export PDF" onclick="exportData('pdf')">
+                    <i class="fas fa-file-pdf" ></i>
+                </button>
+                <button type="button" class="btn btn-lg btn-warning"  data-toggle="tooltip" title="Export Excel" onclick="exportData('excel')">
+                    <i class="fas fa-file-excel" style="color:white;"></i>
+                </button>
+                <button type="button" class="btn btn-lg btn-info" data-toggle="tooltip" title="Export CSV" onclick="exportData('csv')">
+                    <i class="fas fa-file-csv"></i>
+                </button>
         </div>
     </div>
     <!-- /.card-header -->

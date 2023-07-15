@@ -78,12 +78,41 @@
                       <img src="{{ asset('assets/frontend/img/star.svg') }}" alt="" />
                     </div>
                     <p class="new-product-price">Rp {{ number_format($product->price, 0, ',', '.') }}</p>
-                    @foreach ($product->category as $ppc)
+                    {{-- @foreach ($product->category as $ppc)
                     <p class="new-product-text">{{ $ppc->name }}</p>
-                    @endforeach
-                    <a class="btn-link mb-0" href="#" title="Add to Cart"
-                      >Add to Cart</a
-                    >
+                    @endforeach --}}
+                    {{-- <form action="{{ route('cart.store') }}" method="POST" enctype="multipart/form-data">
+                      @csrf
+                      <input type="hidden" value="{{ $product->id }}" name="id">
+                      <input type="hidden" value="{{ $product->name }}" name="name">
+                      <input type="hidden" value="{{ $pmp->price }}" name="price">
+                      <input type="hidden" value="{{ $pmp->discount }}" name="discount">
+                      <input type="hidden" value="{{ $pmp->total_price }}" name="total_price">
+                      <input type="hidden" value="{{ $product->image }}"  name="image">
+                      <input type="hidden" value="1" name="quantity">
+                      <button class="" style="background-color:#483285;color:white;"><i class="fa fa-shopping-cart"></i> Add</button> | 
+                      <a class="btn-link mb-0" href="{{ route('products.show', $product->id) }}" title="Add to Cart"
+                        > <i class="fa fa-eye"></i> Details</a> | 
+                      <a class="wishlist-product">
+                          <i class="far fa-heart"></i> Wishlist</a> | 
+                      <a class="btn-link mb-0" href="" title="Comments"
+                        > <i class="fa fa-comment"></i> Comments (12)</a> 
+                    </form> --}}
+
+
+                    @if(auth()->check())
+                      <a type="button" href="/carts" class="btn btn-link mb-0" >
+                        Add to Cart
+                      </a>
+                    @else
+                      <!-- Button  modal -->
+                      <a type="button"   class="btn btn-link mb-0" id="belanjaBtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Add to Cart ( blm login)
+                      </a>
+                    @endif
+
+
+
                   </div>
                 </div>
               </div>
@@ -200,6 +229,48 @@
       </main>
       <!-- End Main Content -->
 
+
+
+ <!-- Modal add to cart -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        Nikmati kemudahan berbelanja dengan login terlebih dahulu. Silakan login untuk menambahkan produk ini ke keranjang belanja Anda
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Ok</button>
+        {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+{{-- Check visitor apakah sudah login atau belum --}}
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const belanjaBtn = document.getElementById('belanjaBtn');
+    belanjaBtn.addEventListener('click', function() {
+      if (!{{ auth()->check() }}) {
+        // Handle the logic to show the login modal
+        // For example, you can use Bootstrap's modal API to display the modal
+        // You can refer to Bootstrap documentation for more details
+        $('#exampleModal').modal('show');
+      } else {
+        // Handle the logic for adding to cart
+        // For example, you can redirect the user to the cart page or perform an AJAX request
+        // based on your application's flow
+        window.location.href = "/cart";
+      }
+    });
+  });
+</script>
+
+{{-- End Check visitor apakah sudah login atau belum --}}
+
+
     
 @endsection
 
@@ -210,7 +281,23 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
+  $(document).ready(function() {
+    // Event saat tombol Belanja ditekan
+    $('#belanjaBtn').click(function(e) {
+      e.preventDefault();
 
+      // Cek apakah pengunjung sudah login atau belum
+      var isLoggedIn = /* Logika untuk memeriksa apakah pengunjung sudah login atau belum */;
+
+      // Jika belum login, tampilkan modal informasi
+      if (!isLoggedIn) {
+        $('#infoModal').modal('show');
+      } else {
+        // Lanjutkan ke halaman belanja
+        window.location.href = "/belanja";
+      }
+    });
+  });
 </script>
 
 @stop
