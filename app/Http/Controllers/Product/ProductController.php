@@ -206,10 +206,45 @@ class ProductController extends Controller
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
-                    $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-success btn-sm">Edit</a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm">Delete</a>';
+                    $actionBtn = '<a href="javascript:void(0)" class="detail btn btn-info btn-sm"><i class="fa fa-eye"></i></a><a href="javascript:void(0)" class="edit btn btn-success btn-sm"> <i class="fa fa-edit"></i> </a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm"><i class="fa fa-trash"></i></a> ';
                     return $actionBtn;
                 })
-                ->rawColumns(['action'])
+                ->addColumn('category_name', function ($product) {
+                    return $product->category->name;
+                })
+                ->addColumn('status', function ($product) {
+                    $status = '';
+            
+                    switch ($product->status) {
+                        case 'oos':
+                            $status = '<span class="badge badge-danger">Out of Stock</span>';
+                            break;
+                        case 'po':
+                            $status = '<span class="badge badge-primary">Pre-Order</span>';
+                            break;
+                        case 'bo':
+                            $status = '<span class="badge badge-info">Back Order</span>';
+                            break;
+                        case 'd':
+                            $status = '<span class="badge badge-secondary">Discontinued</span>';
+                            break;
+                        case 'cs':
+                            $status = '<span class="badge badge-warning">Coming Soon</span>';
+                            break;
+                        case 'le':
+                            $status = '<span class="badge badge-dark">Limited Edition</span>';
+                            break;
+                        case 'so':
+                            $status = '<span class="badge badge-success">Sold Out</span>';
+                            break;
+                        default:
+                            $status = '';
+                            break;
+                    }
+            
+                    return $status;
+                })
+                ->rawColumns(['action','category_name','status'])
                 ->make(true);
         }
     

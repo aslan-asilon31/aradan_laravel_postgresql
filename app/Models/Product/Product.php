@@ -31,7 +31,7 @@ class Product extends Model
 
     public function category()
     {
-        return $this->hasMany('App\Models\Category\Category', 'uuid', 'category_uuid');
+        return $this->belongsTo('App\Models\Category\Category', 'category_uuid', 'uuid');
     }
     
     

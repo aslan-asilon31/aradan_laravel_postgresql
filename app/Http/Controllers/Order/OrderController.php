@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Order;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Order\Order;
 
 
 /**
@@ -23,6 +24,10 @@ use Illuminate\Http\Request;
 class OrderController extends Controller
 {
     public function index(){
+        $orders = Order::all();
+        return view('orders/index', compact('orders'));
+    }
+    public function indexAPI(){
         $orders = Order::all();
         return $orders;
     }

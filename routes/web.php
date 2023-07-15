@@ -19,8 +19,14 @@ Route::get('/', [ProductController::class, 'indexLandingPage']);
 
 Auth::routes();
 
+
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 Route::get('/products', [ProductController::class, 'index']);
 Route::get('/product-category', [ProductController::class, 'getProductsByCategory']);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

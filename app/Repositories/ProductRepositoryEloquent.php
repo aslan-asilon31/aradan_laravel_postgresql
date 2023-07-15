@@ -13,7 +13,7 @@ class ProductRepositoryEloquent implements ProductRepositoryInterface
 {
     public function getAllProducts()
     {
-        return Product::all();
+        return Product::with('category')->get();
     }
 
     public function getProductById($id)
