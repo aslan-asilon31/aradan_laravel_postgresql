@@ -47,7 +47,7 @@ class CategorySeeder extends Seeder
 
         // 1
         DB::table('categories')->insert([
-            'uuid' => 'd622ce29-70af-4291-8950-fe65608cb696',
+            // 'uuid' => 'd622ce29-70af-4291-8950-fe65608cb696',
             'name' => 'Fashion-Clothing',
             'image' => 'product-1.jpg',
             'slug' => '-',
@@ -55,7 +55,7 @@ class CategorySeeder extends Seeder
 
         // 2
         DB::table('categories')->insert([
-            'uuid' => '576e5e4a-8498-4595-9d11-0e0737e4c2a9',
+            // 'uuid' => '576e5e4a-8498-4595-9d11-0e0737e4c2a9',
             'name' => 'Electronics',
             'image' => 'product-1.jpg',
             'slug' => '-',
@@ -63,7 +63,7 @@ class CategorySeeder extends Seeder
 
         // 3
         DB::table('categories')->insert([
-            'uuid' => '1a305e4a-8498-4595-9d11-0e0737e4c2a9',
+            // 'uuid' => '1a305e4a-8498-4595-9d11-0e0737e4c2a9',
             'name' => 'Beauty-Personal-Care',
             'image' => 'product-1.jpg',
             'slug' => '-',
@@ -71,7 +71,7 @@ class CategorySeeder extends Seeder
 
         // 4
         DB::table('categories')->insert([
-            'uuid' => '6a0f97f4-d39b-49ad-896f-e10f73dd529d',
+            // 'uuid' => '6a0f97f4-d39b-49ad-896f-e10f73dd529d',
             'name' => 'Home-Garden',
             'image' => 'product-1.jpg',
             'slug' => '-',
@@ -79,7 +79,7 @@ class CategorySeeder extends Seeder
 
         // 5
         DB::table('categories')->insert([
-            'uuid' => 'c0cac19c-c502-4629-8780-13c929368cc3',
+            // 'uuid' => 'c0cac19c-c502-4629-8780-13c929368cc3',
             'name' => 'Food-Beverages',
             'image' => 'product-1.jpg',
             'slug' => '-',
@@ -87,7 +87,7 @@ class CategorySeeder extends Seeder
 
         // 6
         DB::table('categories')->insert([
-            'uuid' => 'd611ce29-70af-4291-8950-fe65608cb696',
+            // 'uuid' => 'd611ce29-70af-4291-8950-fe65608cb696',
             'name' => 'Health-Fitness',
             'image' => 'product-1.jpg',
             'slug' => '-',
@@ -95,7 +95,7 @@ class CategorySeeder extends Seeder
 
         // 7
         DB::table('categories')->insert([
-            'uuid' => 'd15a4149-c502-4629-8780-13c929368cc3',
+            // 'uuid' => 'd15a4149-c502-4629-8780-13c929368cc3',
             'name' => 'Hobbies-Toys',
             'image' => 'product-1.jpg',
             'slug' => '-',
@@ -103,7 +103,7 @@ class CategorySeeder extends Seeder
 
         // 8
         DB::table('categories')->insert([
-            'uuid' => '645a4149-1ea9-4867-b403-57b04de86c13',
+            // 'uuid' => '645a4149-1ea9-4867-b403-57b04de86c13',
             'name' => 'Automotive',
             'image' => 'product-1.jpg',
             'slug' => '-',
@@ -111,7 +111,7 @@ class CategorySeeder extends Seeder
 
         // 9
         DB::table('categories')->insert([
-            'uuid' => '73041745-9d12-4ebe-9f40-1451ef5be077',
+            // 'uuid' => '73041745-9d12-4ebe-9f40-1451ef5be077',
             'name' => 'Books-Media',
             'image' => 'product-1.jpg',
             'slug' => '-',
@@ -119,7 +119,7 @@ class CategorySeeder extends Seeder
 
         // 10
         DB::table('categories')->insert([
-            'uuid' => '998480c2-01b4-4f8e-bdd8-8565abe04c42',
+            // 'uuid' => '998480c2-01b4-4f8e-bdd8-8565abe04c42',
             'name' => 'Office-Supplies',
             'image' => 'product-1.jpg',
             'slug' => '-',

@@ -84,7 +84,7 @@
               <div class="col-auto">
                 <ul class="sub-navigation">
                   <li>
-                    <a href="/login" title="Login / Register">Login / Register</a>
+                    {{-- <a href="/login" title="Login / Register">Login / Register</a> --}}
                   </li>
                 </ul>
               </div>
@@ -95,8 +95,8 @@
         <!-- Start Navbar Part -->
         <nav class="navbar navbar-expand-lg p-0">
           <div class="container-xxl ">
-            <a class="navbar-brand" href="/" title="Aradan Template by AppSeed"
-              ><img class="animate__animated animate__heartBeat animate__infinite	infinite animate__slow" src="{{ asset('assets/frontend/img/logo.svg') }}" alt="Aradan Template by AppSeed"
+            <a class="navbar-brand" href="/" title="Aradan "
+              ><img class="animate__animated animate__heartBeat animate__infinite	infinite animate__slow" src="{{ asset('assets/frontend/img/logo.svg') }}" alt="Aradan "
             /></a>
 
             <div
@@ -109,10 +109,10 @@
                 <a
                   class="navbar-brand"
                   href="#"
-                  title="Aradan Template by AppSeed"
+                  title="Aradan "
                   ><img
                     src="{{ asset('assets/frontend/img/logo.svg') }}"
-                    alt="Aradan Template by AppSeed"
+                    alt="Aradan "
                 /></a>
                 <button
                   type="button"
@@ -254,7 +254,9 @@
                 <span></span>
               </button>
 
-              
+
+            @if(auth()->check())
+
               {{-- dropdown image  --}}
               <div class="btn-group">
                 <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -262,14 +264,38 @@
                 </button>
                 <ul class="dropdown-menu">
                   <!-- Dropdown menu items -->
-                  <li><a class="dropdown-item" href="#">View Profile</a></li>
+                  <li><a class="dropdown-item" href="/home">View Profile</a></li>
                   <li><a class="dropdown-item" href="#">Edit Profile</a></li>
                   <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Logout</a></li>
+                  <li>
+                    <form action="{{ route('logout') }}" method="post">
+                      @csrf
+                      <button type="submit">Logout</button>
+                    </form>
+                  </li>
                 </ul>
               </div>
               
               {{-- End dropdown image  --}}
+          
+            @else
+            
+              {{-- dropdown image  --}}
+              <div class="btn-group">
+                <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <img src="{{ asset('user_blank.png') }}" alt="Profile Image" class="profile-image" style="border-radius: 50%; width:40px; height:40px;">
+                </button>
+                <ul class="dropdown-menu">
+                  <!-- Dropdown menu items -->
+                  <li><a class="dropdown-item" href="/login">Login</a></li>
+                  <li><a class="dropdown-item" href="/register">Register</a></li>
+                </ul>
+              </div>
+              
+              {{-- End dropdown image  --}}
+            @endif
+              
+
 
 
             </div>
@@ -334,12 +360,12 @@
                   <a
                     href="#"
                     class="footer-logo"
-                    title="Aradan Template by AppSeed"
+                    title="Aradan "
                     data-aos="zoom-in-left"
                   >
                     <img
                       src="{{ asset('assets/img/logo-footer.svg') }}"
-                      alt="Aradan Template by AppSeed"
+                      alt="Aradan "
                     />
                   </a>
                 </div>

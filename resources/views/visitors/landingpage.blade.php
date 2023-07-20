@@ -2,6 +2,11 @@
 
 
 @section('content')
+{{-- Live Chat Whatsapp --}}
+<a href="https://api.whatsapp.com/send?phone=082123070516" target="_blank">
+  <img src="{{ asset('assets/frontend/img/whatsapp_logo.png') }}" alt="" style="width: 100px; position: fixed; z-index: 9999; bottom: 20px; left: 20px;" srcset="">
+</a>
+{{-- End Live Chat Whatsapp --}}
 
 
       <!-- Main Content -->
@@ -63,7 +68,7 @@
                   <div class="new-product-img-outer bg-pink position-relative">
                     <img
                       class="new-product-img position-absolute"
-                      src="{{ asset('assets/img/product-sm-01.png') }}"
+                      src="{{ asset('/storage/products' . $product->image) }}"
                       alt=""
                     />
                   </div>
@@ -99,16 +104,29 @@
                         > <i class="fa fa-comment"></i> Comments (12)</a> 
                     </form> --}}
 
+                    {{-- <a href="{{ route('products.show', ['id' => $product->id]) }}" class="btn btn-primary">Detail Product</a> --}}
+
+
 
                     @if(auth()->check())
-                      <a type="button" href="/carts" class="btn btn-link mb-0" >
-                        Add to Cart
-                      </a>
+                      <button class="" style="background-color:#68D391;color:white;"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+                      {{-- <button class="" style="background-color:red;color:white;"><i class="fa fa-shopping-cart"></i>delete</button> --}}
+                      <a class="btn-link mb-0" href="{{ route('product.show', $product->id) }}" title="Add to Cart"
+                        > <i class="fa fa-eye"></i> </a> | 
+                      <a class="wishlist-product">
+                          <i class="far fa-heart"></i> </a> | 
+                      <a class="btn-link mb-0" href="" title="Comments"
+                        > <i class="fa fa-comment"></i> (12)</a>
                     @else
-                      <!-- Button  modal -->
-                      <a type="button"   class="btn btn-link mb-0" id="belanjaBtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Add to Cart ( blm login)
-                      </a>
+
+                      <button class="btn btn-link mb-2 px-2 py-2 " data-bs-toggle="modal" data-bs-target="#exampleModal" id="belanjaBtn" style="background-color:#68D391;color:white;"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+                      {{-- <button class="" style="background-color:red;color:white;"><i class="fa fa-shopping-cart"></i>delete</button> --}}
+                      <a class="btn-link mb-0" href="#" id="belanjaBtn" title="Add to Cart"
+                        > <i class="fa fa-eye"></i> </a> | 
+                      <a class="wishlist-product"  id="belanjaBtn">
+                          <i class="far fa-heart"></i> </a> | 
+                      <a class="btn-link mb-0" href="#" id="belanjaBtn" title="Comments"
+                        > <i class="fa fa-comment"></i>  (12)</a>
                     @endif
 
 
@@ -118,109 +136,6 @@
               </div>
                   
               @endforeach
-              <div class="col-lg">
-                <div
-                  class="media new-product d-flex"
-                  data-aos="flip-left"
-                  data-aos-easing="ease-out-cubic"
-                  data-aos-duration="500"
-                  data-aos-delay="200"
-                >
-                  <div
-                    class="new-product-img-outer bg-indigo position-relative"
-                  >
-                    <img
-                      class="new-product-img position-absolute"
-                      src="{{ asset('assets/img/product-sm-02.png') }}"
-                      alt=""
-                    />
-                  </div>
-                  <div class="media-body">
-                    <h5 class="new-product-name text-uppercase mb-1">
-                      Air Max pegasus 37
-                    </h5>
-                    <div class="product-rating d-flex">
-                      <img src="{{ asset('assets/frontend/img/star-a.svg') }}" alt="" />
-                      <img src="{{ asset('assets/frontend/img/star-a.svg') }}" alt="" />
-                      <img src="{{ asset('assets/frontend/img/star-a.svg') }}" alt="" />
-                      <img src="{{ asset('assets/frontend/img/star.svg') }}" alt="" />
-                    </div>
-                    <p class="new-product-price">$189</p>
-                    <p class="new-product-text">Women’s Running shoe</p>
-                    <a class="btn-link mb-0" href="#" title="Add to Cart"
-                      >Add to Cart</a
-                    >
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg">
-                <div
-                  class="media new-product d-flex"
-                  data-aos="flip-left"
-                  data-aos-easing="ease-out-cubic"
-                  data-aos-duration="500"
-                  data-aos-delay="400"
-                >
-                  <div class="new-product-img-outer bg-green position-relative">
-                    <img
-                      class="new-product-img position-absolute"
-                      src="{{ asset('assets/frontend/img/product-sm-03.png') }}"
-                      alt=""
-                    />
-                  </div>
-                  <div class="media-body">
-                    <h5 class="new-product-name text-uppercase mb-1">
-                      Air Max pegasus 37
-                    </h5>
-                    <div class="product-rating d-flex">
-                      <img src="{{ asset('assets/frontend/img/star-a.svg') }}" alt="" />
-                      <img src="{{ asset('assets/frontend/img/star-a.svg') }}" alt="" />
-                      <img src="{{ asset('assets/frontend/img/star-a.svg') }}" alt="" />
-                      <img src="{{ asset('assets/frontend/img/star.svg') }}" alt="" />
-                    </div>
-                    <p class="new-product-price">$189</p>
-                    <p class="new-product-text">Women’s Running shoe</p>
-                    <a class="btn-link mb-0" href="#" title="Add to Cart"
-                      >Add to Cart</a
-                    >
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg">
-                <div
-                  class="media new-product d-flex"
-                  data-aos="flip-left"
-                  data-aos-easing="ease-out-cubic"
-                  data-aos-duration="500"
-                  data-aos-delay="600"
-                >
-                  <div
-                    class="new-product-img-outer bg-dark-blue position-relative"
-                  >
-                    <img
-                      class="new-product-img position-absolute"
-                      src="{{ asset('assets/frontend/img/product-sm-04.png') }}"
-                      alt=""
-                    />
-                  </div>
-                  <div class="media-body">
-                    <h5 class="new-product-name text-uppercase mb-1">
-                      Air Max pegasus 37
-                    </h5>
-                    <div class="product-rating d-flex">
-                      <img src="{{ asset('assets/img/star-a.svg') }}" alt="" />
-                      <img src="{{ asset('assets/frontend/img/star-a.svg') }}" alt="" />
-                      <img src="{{ asset('assets/frontend/img/star-a.svg') }}" alt="" />
-                      <img src="{{ asset('assets/frontend/img/star.svg') }}" alt="" />
-                    </div>
-                    <p class="new-product-price">$189</p>
-                    <p class="new-product-text">Women’s Running shoe</p>
-                    <a class="btn-link mb-0" href="#" title="Add to Cart"
-                      >Add to Cart</a
-                    >
-                  </div>
-                </div>
-              </div>
             </div>
           </section>
           <!-- End New Product -->
@@ -236,7 +151,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-body">
-        Nikmati kemudahan berbelanja dengan login terlebih dahulu. Silakan login untuk menambahkan produk ini ke keranjang belanja Anda
+        Nikmati kemudahan berbelanja di Aradan dengan login terlebih dahulu. Silakan login untuk menambahkan produk ini ke keranjang belanja Anda
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Ok</button>
@@ -277,6 +192,20 @@
 @section('css')
 @stop 
 @section('js')
+
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+  (function(){
+  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+  s1.async=true;
+  s1.src='https://embed.tawk.to/648c8c8ecc26a871b022fe6f/1h32ga41a';
+  s1.charset='UTF-8';
+  s1.setAttribute('crossorigin','*');
+  s0.parentNode.insertBefore(s1,s0);
+  })();
+  </script>
+<!--End of Tawk.to Script-->
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 

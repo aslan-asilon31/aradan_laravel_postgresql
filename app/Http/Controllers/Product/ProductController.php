@@ -8,9 +8,16 @@ use DB;
 use Storage;
 use App\Models\Product\Product;
 use Illuminate\Support\Collection;
-use App\Services\ProductService;
+use App\Services\Product\ProductService;
 use DataTables;
 use Illuminate\Support\Facades\Http;
+use App\Exports\ProductsExport;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Models\Category\Category;
+use Carbon\Carbon;
+use Dompdf\Dompdf;
+use Illuminate\Support\Facades\View;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 
 /**
@@ -197,13 +204,10 @@ class ProductController extends Controller
     {
         $this->productService = $productService;
 
-        $this->middleware('permission:product-list|product-create|product-edit|product-delete', ['only' => ['index','show']]);
-
-        $this->middleware('permission:product-create', ['only' => ['create','store']]);
-
-        $this->middleware('permission:product-edit', ['only' => ['edit','update']]);
-
-        $this->middleware('permission:product-delete', ['only' => ['destroy']]);
+        // $this->middleware('permission:product-list|product-create|product-edit|product-delete', ['only' => ['index','show']]);
+        // $this->middleware('permission:product-create', ['only' => ['create','store']]);
+        // $this->middleware('permission:product-edit', ['only' => ['edit','update']]);
+        // $this->middleware('permission:product-delete', ['only' => ['destroy']]);
     }
 
     public function index(Request $request)
@@ -213,39 +217,45 @@ class ProductController extends Controller
     
             return DataTables::of($data)
                 ->addIndexColumn()
-                ->addColumn('action', function ($row) {
-                    $actionBtn = '<a href="javascript:void(0)" class="detail btn btn-info btn-sm"><i class="fa fa-eye"></i></a>';
-                    $actionBtn .= '<a href="javascript:void(0)" class="edit btn btn-success btn-sm"> <i class="fa fa-edit"></i> </a>';
-                    $actionBtn .= '<a href="javascript:void(0)" class="delete btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>';
-                    // $actionBtn .= '<a href="'.route('products.create').'" class="create btn btn-primary btn-sm"><i class="fa fa-plus"></i> Create Product</a>'; // Add the Create Product button
-                    return $actionBtn;
+                ->addColumn('action', function ($product) {
+                    return '<td class="text-center">
+                                <form onsubmit="return confirm(\'Apakah Anda Yakin ?\');" action="' . route('product.destroy', $product->id) . '" method="POST">
+                                    <a href="' . route('product.edit', $product->id) . '" class="btn btn-sm btn-primary">EDIT</a>
+                                    ' . csrf_field() . '
+                                    ' . method_field('DELETE') . '
+                                    <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>
+                                </form>
+                            </td>';
                 })
-                ->addColumn('category_name', function ($product) {
-                    return $product->category->name;
+                ->addColumn('category_id', function ($product) {
+                    return $product->category ? $product->category->name : '-';
                 })
                 ->addColumn('status', function ($product) {
                     $status = '';
             
                     switch ($product->status) {
-                        case 'oos':
+                        case 'out-of-stock':
                             $status = '<span class="badge badge-danger">Out of Stock</span>';
                             break;
-                        case 'po':
+                        case 'pre-order':
                             $status = '<span class="badge badge-primary">Pre-Order</span>';
                             break;
-                        case 'bo':
+                        case 'back-order':
                             $status = '<span class="badge badge-info">Back Order</span>';
                             break;
-                        case 'd':
+                        case 'on-sale':
+                            $status = '<span class="badge badge-info">On Sale</span>';
+                            break;
+                        case 'discontinued':
                             $status = '<span class="badge badge-secondary">Discontinued</span>';
                             break;
-                        case 'cs':
+                        case 'cooming-soon':
                             $status = '<span class="badge badge-warning">Coming Soon</span>';
                             break;
-                        case 'le':
+                        case 'limited-edition':
                             $status = '<span class="badge badge-dark">Limited Edition</span>';
                             break;
-                        case 'so':
+                        case 'sold-out':
                             $status = '<span class="badge badge-success">Sold Out</span>';
                             break;
                         default:
@@ -255,7 +265,10 @@ class ProductController extends Controller
             
                     return $status;
                 })
-                ->rawColumns(['action','category_name','status'])
+                ->addColumn('rating', function ($product) {
+                    return $product->rating ? $product->rating : 0;
+                })
+                ->rawColumns(['action','category_name','status','rating'])
                 ->make(true);
         }
     
@@ -287,60 +300,109 @@ class ProductController extends Controller
 
     public function ProductDashboardPie(ProductService $productService)
     {
-    $products = $productService->getAllProducts();
+        $products = $productService->getAllProducts();
 
-    $labels = $products->pluck('name');
-    $data = $products->pluck('quantity');
+        $labels = $products->pluck('name');
+        $data = $products->pluck('quantity');
 
-    $pieChart = new class() extends BaseChart implements Chartisan {
-        public function handler(): array
-        {
-            return [
-                'labels' => $this->labels,
-                'datasets' => [
-                    [
-                        'data' => $this->data,
-                        'backgroundColor' => ['red', 'blue', 'yellow', 'green'],
+        $pieChart = new class() extends BaseChart implements Chartisan {
+            public function handler(): array
+            {
+                return [
+                    'labels' => $this->labels,
+                    'datasets' => [
+                        [
+                            'data' => $this->data,
+                            'backgroundColor' => ['red', 'blue', 'yellow', 'green'],
+                        ],
                     ],
-                ],
-            ];
-        }
-    };
+                ];
+            }
+        };
 
-    $pieChart->labels($labels);
-    $pieChart->dataset('Product Quantity', 'pie', $data);
+        $pieChart->labels($labels);
+        $pieChart->dataset('Product Quantity', 'pie', $data);
 
-    return view('home')->with('pieChart', $pieChart);
-}
+        return view('home')->with('pieChart', $pieChart);
+    }
 
 
     public function show($id)
     {
         $product = $this->productService->getProductById($id);
-        // ...
+        $productRecommendation = $this->productService->getTopProductsByCategory($id);
+
+        if (!$product) {
+            // If the product is not found, you can handle the error here
+            abort(404, 'Product not found');
+        }
+
+        return view('products.detail', compact('product','productRecommendation'));
     }
 
     public function create()
     {
-        return view('products.create');
+        $categories = DB::select('SELECT * FROM categories');
+        return view('products.create', compact('categories'));
     }
+
+    public function edit(Product $product)
+    {
+        $categories = DB::select('SELECT * FROM categories');
+    
+        // Verify if the product exists
+        if (!$product) {
+            return redirect()->route('product.index')->with('error', 'Product not found.');
+        }
+    
+        return view('products.edit', compact('product', 'categories'));
+    }
+
 
     public function store(Request $request)
     {
         $product = $this->productService->createProduct($request->all());
-        // ...
+
+        if ($product) {
+            return redirect()->route('product.index')->with(['success' => 'Data Berhasil Disimpan!']);
+        } else {
+            return redirect()->route('product.index')->with(['error' => 'Data Gagal Disimpan!']);
+        }
     }
 
     public function update(Request $request, $id)
     {
         $product = $this->productService->updateProduct($id, $request->all());
-        // ...
+        return redirect()->route('product.index');
     }
-
+    
     public function destroy($id)
     {
-        $this->productService->deleteProduct($id);
-        // ...
+        $products = $this->productService->deleteProduct($id);
+        return redirect()->route('product.index');
+    }
+
+    // public function export_excel(){
+    //     return (new FastExcel(Product::all()))->download('products.xlsx');
+    // }
+
+    public function export_excel()
+    {
+        $filename = 'products_' . Carbon::now()->format('Y-m-d_H-i-s') . '.xlsx';
+        return Excel::download(new ProductsExport, $filename);
+    }
+
+    public function export_pdf()
+    {
+        $filename = 'products_' . Carbon::now()->format('Y-m-d_H-i-s') . '.pdf';
+        return Excel::download(new ProductsExport, $filename);
+    }
+
+
+    public function export_csv()
+    {
+        $filename = 'products_' . Carbon::now()->format('Y-m-d_H-i-s') . '.csv';
+        return Excel::download(new ProductsExport, $filename);
     }
 
 }

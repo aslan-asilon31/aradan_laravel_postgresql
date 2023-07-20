@@ -88,6 +88,10 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')
                 ->group(base_path('routes/web.php'));
 
+            //user
+            Route::middleware('web')
+                ->group(base_path('routes/Routes_local/user/user.php'));
+
             //product
             Route::middleware('web')
                 ->group(base_path('routes/Routes_local/product/product.php'));
@@ -99,6 +103,10 @@ class RouteServiceProvider extends ServiceProvider
             // order
             Route::middleware('web')
                 ->group(base_path('routes/Routes_local/order/order.php'));
+
+            // role and permissions
+            Route::middleware('web')
+                ->group(base_path('routes/Routes_local/role/role.php'));
         });
     }
 }

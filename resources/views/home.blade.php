@@ -8,6 +8,15 @@
 
 @section('content')
 
+<a href="/home-export-pdf"  type="button" class="btn btn-sm btn-danger" style="" data-toggle="tooltip" title="Export PDF" >
+  <i class="fas fa-file-pdf" ></i>
+</a>
+<a href="/product-excel" type="button" class="btn btn-sm btn-warning"  data-toggle="tooltip" title="Export Excel">
+  <i class="fas fa-file-excel" style="color:white;"></i>
+</a>
+<a href="/product-csv" type="button" class="btn btn-sm btn-info" data-toggle="tooltip" title="Export csv" >
+  <i class="fas fa-file-csv"></i>
+</a>
 
         <!-- Info boxes -->
         <div class="row">
@@ -80,11 +89,11 @@
                   <h5 class="card-title">Recapitulation Report Sales</h5>
   
                   <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <button type="button" class="btn btn-smol" data-card-widget="collapse">
                       <i class="fas fa-minus"></i>
                     </button>
                     <div class="btn-group">
-                      <button type="button" class="btn btn-tool dropdown-toggle" data-toggle="dropdown">
+                      <button type="button" class="btn btn-smol dropdown-toggle" data-toggle="dropdown">
                         <i class="fas fa-wrench"></i>
                       </button>
                       <div class="dropdown-menu dropdown-menu-right" role="menu">
@@ -95,7 +104,7 @@
                         <a href="#" class="dropdown-item">Separated link</a>
                       </div>
                     </div>
-                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                    <button type="button" class="btn btn-smol" data-card-widget="remove">
                       <i class="fas fa-times"></i>
                     </button>
                   </div>
@@ -273,10 +282,10 @@
                         <h3 class="card-title">Latest Orders</h3>
         
                         <div class="card-tools">
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                            <button type="button" class="btn btn-smol" data-card-widget="collapse">
                                 <i class="fas fa-minus"></i>
                             </button>
-                            <button type="button" class="btn btn-tool" data-card-widget="remove">
+                            <button type="button" class="btn btn-smol" data-card-widget="remove">
                                 <i class="fas fa-times"></i>
                             </button>
                         </div>
@@ -373,10 +382,10 @@
                     <div class="card-header">
                         <h3 class="card-title">Recently Added Products</h3>
                         <div class="card-tools">
-                            <button type="button" class="btn btn-tool" data-widget="collapse">
+                            <button type="button" class="btn btn-smol" data-widget="collapse">
                                 <i class="fas fa-minus"></i>
                             </button>
-                            <button type="button" class="btn btn-tool" data-widget="remove">
+                            <button type="button" class="btn btn-smol" data-widget="remove">
                                 <i class="fas fa-times"></i>
                             </button>
                         </div>

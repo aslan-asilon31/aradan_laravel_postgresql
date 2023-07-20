@@ -13,7 +13,7 @@ return new class extends Migration
     {
         // Schema::connection('pgsql')->create('data_internal.categories', function (Blueprint $table) {
             Schema::create('categories', function (Blueprint $table) {
-            $table->uuid('uuid')->primary();
+            $table->id();
             $table->string('name');
             $table->string('image')->nullable();
             $table->string('slug');

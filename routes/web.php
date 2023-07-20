@@ -22,9 +22,9 @@ Auth::routes();
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home-export-pdf', [App\Http\Controllers\HomeController::class, 'export_pdf'])->name('home-export-pdf');
 
 
-Route::get('/products', [ProductController::class, 'index']);
 Route::get('/product-category', [ProductController::class, 'getProductsByCategory']);
 
 Auth::routes();

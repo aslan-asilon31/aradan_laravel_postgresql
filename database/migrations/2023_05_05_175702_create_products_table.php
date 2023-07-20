@@ -13,14 +13,15 @@ return new class extends Migration
     {
         // Schema::connection('pgsql')->create('data_internal.products', function (Blueprint $table) {
         Schema::create('products', function (Blueprint $table) {
-            $table->string('uuid')->primary();
-            $table->string('category_uuid');
+            $table->id();
+            $table->integer('category_id');
             $table->string('name');
             $table->string('image')->nullable();
             $table->integer('price');
             $table->integer('stock');
             $table->integer('discount');
             $table->string('status');
+            $table->integer('rating');
             $table->string('slug');
             $table->text('description');
             $table->timestamp('deleted_at')->nullable();

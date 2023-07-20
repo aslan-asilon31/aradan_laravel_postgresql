@@ -11,27 +11,26 @@ class Product extends Model
     use HasFactory;
 
     protected $table = 'products';
-    protected $primaryKey = 'uuid';
+    protected $primaryKey = 'id';
     public $incrementing = false;
     protected $keyType = 'string';
 
     protected $fillable = [
-        'uuid',
-        'category_uuid',
+        'category_id',
         'name',
         'image',
         'price',
         'stock',
         'discount',
         'status',
-        'category',
+        'rating',
         'slug',
         'description',
     ];
 
     public function category()
     {
-        return $this->belongsTo('App\Models\Category\Category', 'category_uuid', 'uuid');
+        return $this->belongsTo('App\Models\Category\Category');
     }
     
     

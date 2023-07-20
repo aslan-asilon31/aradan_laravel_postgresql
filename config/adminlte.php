@@ -307,38 +307,33 @@ return [
             'text' => 'search',
         ],
         [
-            'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
-        ],
-        [
             'text'        => 'Dashboard',
             'url'         => 'home',
             'icon' => 'fas fa-fw fa-tachometer-alt',
         ],
         [
             'text'        => 'Product',
-            'url'         => 'product',
+            'url'         => 'products',
             'icon' => 'fas fa-fw fa-box',
-            'can'   => 'product-list'
+            // 'can'   => 'product-create'
         ],
         [
             'text' => 'category',
             'url'  => 'category',
             'icon' => 'fas fa-fw fa-boxes',
-            'can'   => 'category-list'
+            // 'can'   => 'category-list'
         ],
         [
             'text' => 'order',
             'url'  => '/orders',
             'icon' => 'fa fa-fw fa-money-bill',
-            'can'   => 'product-list'
+            // 'can'   => 'product-list'
         ],
         [
             'text' => 'report',
             'url'  => 'report',
             'icon' => 'fas fa-fw fa-file',
-            'can'   => 'report-list'
+            // 'can'   => 'report-list'
         ],
         ['header' => 'account_settings'],
         [
@@ -352,29 +347,16 @@ return [
             'icon' => 'fas fa-fw fa-lock',
         ],
         [
-            'text'    => 'Role and permissions',
-            'icon'    => 'fas fa-fw fa-share',
-            'submenu' => [
-                [
-                    'text' => 'role setting',
-                    'url'  => '#',
-                    'can'   => 'permission-list'
-                ],
-                [
-                    'text' => 'permission setting',
-                    'url'  => '#',
-                    'can'   => 'permission-list'
-                ],
-               
-            ],
-            'can'   => 'role-list'
+            'text' => 'roles',
+            'url'  => 'roles',
+            'icon' => 'fas fa-fw fa-lock',
         ],
-        ['header' => 'Config'],
         [
-            'text' => 'Log out',
-            'url'  => 'logout',
-            'icon' => 'fas fa-fw fa-sign-out-alt',
+            'text' => 'permissions',
+            'url'  => 'permissions',
+            'icon' => 'fas fa-fw fa-lock',
         ],
+        
     ],
 
     /*
