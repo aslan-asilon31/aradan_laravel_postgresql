@@ -1,9 +1,5 @@
-========== this project as laravel fullstack and provide API for other Frontend
-![aradan-fullstack](https://github.com/aslan-asilon31/aradan_laravel_postgresql/assets/116990574/1f19c1be-2a18-4fc3-8007-863da2f5c336)
-
 # Aradan Laravel 10 Bootstrap
-![aradan_laravel10_bootstrap-add_logo](https://github.com/aslan-asilon31/aradan_laravel10_bootstrap/assets/116990574/7095d294-f7dd-4e37-b57f-d7b174a21f50)
-
+![aradan_laravel_postgresql](https://github.com/aslan-asilon31/aradan_laravel_postgresql/assets/116990574/86de2fee-de97-42e2-a3d3-3aa60220cc34)
 
 
 ## Table of Contents 🔥
@@ -28,14 +24,12 @@
 ## 💠 Screnshoots (not all pages in the screenshot) <br>
 ----------- Landing Page
 
-![aradan_laravel10_bootstrap-add_logo](https://github.com/aslan-asilon31/aradan_laravel10_bootstrap/assets/116990574/7095d294-f7dd-4e37-b57f-d7b174a21f50)
+![aradan_laravel_postgresql](https://github.com/aslan-asilon31/aradan_laravel_postgresql/assets/116990574/86de2fee-de97-42e2-a3d3-3aa60220cc34)
 
-![aradan_laravel10_bootstrap1](https://github.com/aslan-asilon31/aradan_laravel10_bootstrap/assets/116990574/d45c53d4-bbce-4335-9a54-6d2808668791)
 
----------------- Admin Page <br>
-![aradan_laravel10_bootstrap_admin_products](https://github.com/aslan-asilon31/aradan_laravel10_bootstrap/assets/116990574/14fa4c7e-0c4f-4e59-ae48-d1b47246bb40)
+------------ dashboard admin
 
-![aradan_laravel10_bootstrap_admin_users](https://github.com/aslan-asilon31/aradan_laravel10_bootstrap/assets/116990574/bab8365e-57f9-40ff-b56c-77ae8cfc4842)
+![aradan_laravel_postgresql_dashboard](https://github.com/aslan-asilon31/aradan_laravel_postgresql/assets/116990574/114648c4-1e5b-4ce0-b265-8a1ca96b0f02)
 
 
 </div>
@@ -84,13 +78,13 @@ Integrasi Media Sosial:
 Laporan dan Analisis:
     Fitur untuk melihat laporan penjualan, analisis pengunjung, dan performa produk untuk membantu pengambilan keputusan bisnis.
 
-Sistem Keamanan:
+### Sistem Keamanan:
     Perlindungan keamanan yang kuat untuk melindungi data pengguna dan transaksi.
 
-Fitur Wishlist (Daftar Keinginan):
+### Fitur Wishlist (Daftar Keinginan):
     Fitur yang memungkinkan pengguna untuk menyimpan daftar produk yang ingin dibeli di masa mendatang.
 
-Sistem Penilaian Toko:
+### Sistem Penilaian Toko:
     Fitur yang memungkinkan pengguna memberikan penilaian dan ulasan tentang toko online itu sendiri.
 
 ## 💠 developing Features for developers
