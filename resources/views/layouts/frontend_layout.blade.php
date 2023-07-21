@@ -255,6 +255,7 @@
               </button>
 
 
+            {{-- profile  --}}
             @if(auth()->check())
 
               {{-- dropdown image  --}}
@@ -279,7 +280,6 @@
               {{-- End dropdown image  --}}
           
             @else
-            
               {{-- dropdown image  --}}
               <div class="btn-group">
                 <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -291,9 +291,10 @@
                   <li><a class="dropdown-item" href="/register">Register</a></li>
                 </ul>
               </div>
-              
               {{-- End dropdown image  --}}
             @endif
+            {{--End profile  --}}
+
               
 
 

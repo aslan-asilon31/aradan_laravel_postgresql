@@ -44,7 +44,56 @@
 
 
 <div class="" id="feature">
-## 💠 Features
+## 💠 developing Features for users
+-Pencarian Produk:
+    Fitur untuk mencari produk atau layanan berdasarkan kata kunci atau kategori.
+
+Katalog Produk:
+    Halaman yang menampilkan daftar produk atau layanan yang tersedia di toko online.
+
+Halaman Detail Produk:
+    Halaman yang memberikan informasi lengkap tentang suatu produk atau layanan, termasuk deskripsi, gambar, harga, dan ulasan dari pembeli sebelumnya.
+
+Keranjang Belanja:
+    Fitur yang memungkinkan pembeli untuk menambahkan produk ke keranjang belanja sebelum melakukan pembayaran.
+
+Pengelolaan Akun Pengguna:
+    Fitur untuk membuat dan mengelola akun pengguna, termasuk informasi profil, alamat pengiriman, dan metode pembayaran.
+
+Proses Pembayaran:
+    Sistem pembayaran yang aman dan beragam, seperti kartu kredit, transfer bank, atau metode pembayaran digital.
+
+Pengiriman dan Pengiriman:
+    Pilihan untuk memilih metode pengiriman dan mengatur pengiriman ke alamat tujuan.
+
+Pelacakan Pesanan:
+    Fitur yang memungkinkan pembeli untuk melacak status dan perkembangan pesanan mereka.
+
+Ulasan dan Rating:
+    Fitur yang memungkinkan pembeli memberikan ulasan dan penilaian terhadap produk atau layanan yang telah dibeli.
+
+Promo dan Diskon:
+    Pengelolaan promosi dan penawaran diskon khusus bagi pembeli.
+
+Notifikasi:
+    Pemberitahuan tentang status pesanan, promo, atau penawaran khusus melalui email atau ponsel.
+
+Integrasi Media Sosial:
+    Kemudahan berbagi produk atau layanan di media sosial dan menghubungkan toko online dengan akun media sosial.
+
+Laporan dan Analisis:
+    Fitur untuk melihat laporan penjualan, analisis pengunjung, dan performa produk untuk membantu pengambilan keputusan bisnis.
+
+Sistem Keamanan:
+    Perlindungan keamanan yang kuat untuk melindungi data pengguna dan transaksi.
+
+Fitur Wishlist (Daftar Keinginan):
+    Fitur yang memungkinkan pengguna untuk menyimpan daftar produk yang ingin dibeli di masa mendatang.
+
+Sistem Penilaian Toko:
+    Fitur yang memungkinkan pengguna memberikan penilaian dan ulasan tentang toko online itu sendiri.
+
+## 💠 developing Features for developers
 - laravel sbg fullstack sekaligus laravel sebagai backend dengan frontend menggunakan (ReactJS, VueJS, Angular) <br>
 - implementasi Algoritma "item base collaborative filtering" untuk rekomendasi produk <br>
 - Implemented SOLID Design Pattern<br>
