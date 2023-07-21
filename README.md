@@ -21,6 +21,7 @@
 <hr>
 
 <div class="" id="screenshoot">
+
 ## 💠 Screnshoots (not all pages in the screenshot) <br>
 ----------- Landing Page
 
@@ -38,54 +39,58 @@
 
 
 <div class="" id="feature">
+
 ## 💠 developing Features for users
--Pencarian Produk:
-    Fitur untuk mencari produk atau layanan berdasarkan kata kunci atau kategori.
 
-Katalog Produk:
-    Halaman yang menampilkan daftar produk atau layanan yang tersedia di toko online.
+### Pencarian Produk:
+-Fitur untuk mencari produk atau layanan berdasarkan kata kunci atau kategori.<br>
 
-Halaman Detail Produk:
-    Halaman yang memberikan informasi lengkap tentang suatu produk atau layanan, termasuk deskripsi, gambar, harga, dan ulasan dari pembeli sebelumnya.
+### Katalog Produk:
+-Halaman yang menampilkan daftar produk atau layanan yang tersedia di toko online.<br>
 
-Keranjang Belanja:
-    Fitur yang memungkinkan pembeli untuk menambahkan produk ke keranjang belanja sebelum melakukan pembayaran.
+### Halaman Detail Produk:
+-Halaman yang memberikan informasi lengkap tentang suatu produk atau layanan, termasuk deskripsi, gambar, harga, dan ulasan dari pembeli sebelumnya.<br>
 
-Pengelolaan Akun Pengguna:
-    Fitur untuk membuat dan mengelola akun pengguna, termasuk informasi profil, alamat pengiriman, dan metode pembayaran.
+### Keranjang Belanja:
+-Fitur yang memungkinkan pembeli untuk menambahkan produk ke keranjang belanja sebelum melakukan pembayaran.<br>
 
-Proses Pembayaran:
-    Sistem pembayaran yang aman dan beragam, seperti kartu kredit, transfer bank, atau metode pembayaran digital.
+### Pengelolaan Akun Pengguna:
+- Fitur untuk membuat dan mengelola akun pengguna, termasuk informasi profil, alamat pengiriman, dan metode pembayaran.<br>
 
-Pengiriman dan Pengiriman:
-    Pilihan untuk memilih metode pengiriman dan mengatur pengiriman ke alamat tujuan.
+### Proses Pembayaran:
+- Sistem pembayaran yang aman dan beragam, seperti kartu kredit, transfer bank, atau metode pembayaran digital.<br>
 
-Pelacakan Pesanan:
-    Fitur yang memungkinkan pembeli untuk melacak status dan perkembangan pesanan mereka.
+### Pengiriman dan Pengiriman:
+-Pilihan untuk memilih metode pengiriman dan mengatur pengiriman ke alamat tujuan.<br>
 
-Ulasan dan Rating:
-    Fitur yang memungkinkan pembeli memberikan ulasan dan penilaian terhadap produk atau layanan yang telah dibeli.
+### Pelacakan Pesanan:
+- Fitur yang memungkinkan pembeli untuk melacak status dan perkembangan pesanan mereka.<br>
 
-Promo dan Diskon:
-    Pengelolaan promosi dan penawaran diskon khusus bagi pembeli.
+### Ulasan dan Rating:
+- Fitur yang memungkinkan pembeli memberikan ulasan dan penilaian terhadap produk atau layanan yang telah dibeli.<br>
 
-Notifikasi:
-    Pemberitahuan tentang status pesanan, promo, atau penawaran khusus melalui email atau ponsel.
+### Promo dan Diskon:
+- Pengelolaan promosi dan penawaran diskon khusus bagi pembeli.<br>
 
-Integrasi Media Sosial:
-    Kemudahan berbagi produk atau layanan di media sosial dan menghubungkan toko online dengan akun media sosial.
+### Notifikasi:
+- Pemberitahuan tentang status pesanan, promo, atau penawaran khusus melalui email atau ponsel.<br>
 
-Laporan dan Analisis:
-    Fitur untuk melihat laporan penjualan, analisis pengunjung, dan performa produk untuk membantu pengambilan keputusan bisnis.
+### Integrasi Media Sosial:
+- Kemudahan berbagi produk atau layanan di media sosial dan menghubungkan toko online dengan akun media sosial.<br>
+
+### Laporan dan Analisis:
+- Fitur untuk melihat laporan penjualan, analisis pengunjung, dan performa produk untuk membantu pengambilan keputusan bisnis.<br>
 
 ### Sistem Keamanan:
-    Perlindungan keamanan yang kuat untuk melindungi data pengguna dan transaksi.
+- Perlindungan keamanan yang kuat untuk melindungi data pengguna dan transaksi.<br>
 
 ### Fitur Wishlist (Daftar Keinginan):
-    Fitur yang memungkinkan pengguna untuk menyimpan daftar produk yang ingin dibeli di masa mendatang.
+- Fitur yang memungkinkan pengguna untuk menyimpan daftar produk yang ingin dibeli di masa mendatang.<br>
 
 ### Sistem Penilaian Toko:
-    Fitur yang memungkinkan pengguna memberikan penilaian dan ulasan tentang toko online itu sendiri.
+- Fitur yang memungkinkan pengguna memberikan penilaian dan ulasan tentang toko online itu sendiri.<br>
+
+<hr>
 
 ## 💠 developing Features for developers
 - laravel sbg fullstack sekaligus laravel sebagai backend dengan frontend menggunakan (ReactJS, VueJS, Angular) <br>
