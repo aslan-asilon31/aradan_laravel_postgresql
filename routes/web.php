@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Product\ProductController;
+use App\Http\Controllers\Auth\SocialiteController;
 
 
 /*
@@ -30,3 +31,9 @@ Route::get('/product-category', [ProductController::class, 'getProductsByCategor
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+/**
+ * socialite auth
+ */
+Route::get('/auth/{provider}', [SocialiteController::class, 'redirectToProvider']);
+Route::get('/auth/{provider}/callback', [SocialiteController::class, 'handleProvideCallback']);

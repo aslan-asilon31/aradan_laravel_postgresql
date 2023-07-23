@@ -1,5 +1,5 @@
 # Aradan Laravel 10 Bootstrap
-![aradan_laravel_postgresql](https://github.com/aslan-asilon31/aradan_laravel_postgresql/assets/116990574/86de2fee-de97-42e2-a3d3-3aa60220cc34)
+![aradan_red_landingpage](https://github.com/aslan-asilon31/aradan_laravel_postgresql/assets/116990574/dc3adcf4-fd3c-402f-9f8f-6d19fac54fdb)
 
 
 ## Table of Contents 🔥
@@ -24,9 +24,19 @@
 
 ## 💠 Screnshoots (not all pages in the screenshot) <br>
 ----------- Landing Page
+![aradan_red_landingpage](https://github.com/aslan-asilon31/aradan_laravel_postgresql/assets/116990574/dc3adcf4-fd3c-402f-9f8f-6d19fac54fdb)
 
-![aradan_laravel_postgresql](https://github.com/aslan-asilon31/aradan_laravel_postgresql/assets/116990574/86de2fee-de97-42e2-a3d3-3aa60220cc34)
+------ landing page before login
+![aradan_red_before_login](https://github.com/aslan-asilon31/aradan_laravel_postgresql/assets/116990574/5f8be881-7ded-48c9-87b6-db9dfbe3da00)
 
+--------- contact us
+![aradan_red_click_contact_us](https://github.com/aslan-asilon31/aradan_laravel_postgresql/assets/116990574/b621f136-3cc4-4c99-8cb7-3ece68086d83)
+
+---------- login page
+![aradan_red_login](https://github.com/aslan-asilon31/aradan_laravel_postgresql/assets/116990574/22034d7c-2fdb-4094-bebf-1a8addbcf6eb)
+
+-----------register page
+![aradan_red_register](https://github.com/aslan-asilon31/aradan_laravel_postgresql/assets/116990574/33068566-5101-4355-aecb-75f57972f32d)
 
 ------------ dashboard admin
 

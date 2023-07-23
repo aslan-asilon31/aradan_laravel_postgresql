@@ -35,6 +35,11 @@ class User extends Authenticatable
         'slug',
     ];
 
+    public function socialAccounts()
+    {
+    return $this->hasMany(SocialAccount::class);
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

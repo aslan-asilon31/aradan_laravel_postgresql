@@ -193,19 +193,108 @@
 @stop 
 @section('js')
 
-<!--Start of Tawk.to Script-->
-<script type="text/javascript">
-  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-  (function(){
-  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-  s1.async=true;
-  s1.src='https://embed.tawk.to/648c8c8ecc26a871b022fe6f/1h32ga41a';
-  s1.charset='UTF-8';
-  s1.setAttribute('crossorigin','*');
-  s0.parentNode.insertBefore(s1,s0);
-  })();
-  </script>
-<!--End of Tawk.to Script-->
+        <!-- Place the Tawk script in the head section -->
+        <script type="text/javascript">
+          var Tawk_API = Tawk_API || {};
+          Tawk_LoadStart = new Date();
+
+          window.Tawk_API.onChatMaximized = function() {
+              // Place your code here, for example, you can log the event or show a notification.
+              console.log('Chat widget maximized.');
+              // You can also perform any other actions you want when the chat widget is maximized.
+          };
+  
+          // Function to show the Tawk chat when the button is clicked
+          function showTawkChat() {
+              // Check if the Tawk chat widget has already been loaded
+              if (typeof Tawk_API.toggle !== "undefined") {
+                      // Maximize the chat widget
+                      Tawk_API.maximize();
+                      // Show the chat widget
+                      // Tawk_API.toggle();
+
+                      // Set waktu obrolan selesai jika user tidak membalas chat admin dalam 10 minutes (600,000 milliseconds)
+                      setTimeout(function () {
+                          endTawkChatIfNoReply();
+                      }, 600000);
+              } else {
+                  // If the Tawk chat widget is not yet loaded, reload the Tawk script
+                  var s1 = document.createElement("script");
+                  var s0 = document.getElementsByTagName("script")[0];
+                  s1.async = true;
+                  s1.src = 'https://embed.tawk.to/648c8c8ecc26a871b022fe6f/1h32ga41a';
+                  s1.charset = 'UTF-8';
+                  s1.setAttribute('crossorigin', '*');
+                  s0.parentNode.insertBefore(s1, s0);
+  
+                  // Add an event listener to show the chat widget after the script is loaded
+                  s1.addEventListener('load', function () {
+
+                      // Maximize the chat widget
+                      // Tawk_API.maximize();
+                      // Show the chat widget
+                      // Tawk_API.toggle();
+
+                      // Set waktu obrolan selesai jika user tidak membalas chat admin dalam 10 minutes (600,000 milliseconds)
+                      setTimeout(function () {
+                      endTawkChatIfNoReply();
+                      }, 600000);
+                  });
+                      
+
+                  }
+              }
+
+
+              // Mengecek admin sedang online atau offline
+              function checkTawkStatus() {
+              // Check if the Tawk chat widget has already been loaded
+              if (typeof Tawk_API.getStatus !== "undefined") {
+                  var pageStatus = Tawk_API.getStatus();
+
+                  if (pageStatus === 'online') {
+                      // Do something for online status
+                      console.log('Tawk is online.');
+                  } else if (pageStatus === 'away') {
+                      // Do something for away status
+                      console.log('Tawk is away.');
+                  } else {
+                      // Do something for offline status
+                      console.log('Tawk is offline.');
+                  }
+              } else {
+                  // If the Tawk chat widget is not yet loaded, wait and check again
+                  setTimeout(checkTawkStatus, 100);
+              }
+          }
+
+          // Call the function to check Tawk status when the widget is loaded
+          window.Tawk_API.onLoad = function () {
+              checkTawkStatus();
+          };
+
+
+
+          // Function to end the chat if there is no reply from admin
+          function endTawkChatIfNoReply() {
+              if (typeof Tawk_API.onChatMaximized !== "undefined" && typeof Tawk_API.endChat !== "undefined") {
+                  var chatMaximized = Tawk_API.onChatMaximized();
+                  if (chatMaximized) {
+                      Tawk_API.endChat();
+                      console.log('Chat has been ended due to no reply from admin.');
+                  }
+              }
+          }
+
+          // Call the function to check Tawk status when the widget is loaded
+          window.Tawk_API.onLoad = function () {
+              checkTawkStatus();
+          };
+
+
+
+
+      </script>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 

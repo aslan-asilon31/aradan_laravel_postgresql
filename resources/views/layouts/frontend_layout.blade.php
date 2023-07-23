@@ -13,8 +13,7 @@
     />
     <link rel="icon" type="image/png" href="{{ asset('assets/frontend/img/favicon.png') }}" />
     <title>Aradan</title>
-
-    
+    @yield('js')
 
     @yield('css')
 
@@ -56,6 +55,108 @@
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     /> -->
+
+
+    <!-- Place the Tawk script in the head section -->
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {};
+        Tawk_LoadStart = new Date();
+
+        window.Tawk_API.onChatMaximized = function() {
+            // Place your code here, for example, you can log the event or show a notification.
+            console.log('Chat widget maximized.');
+            // You can also perform any other actions you want when the chat widget is maximized.
+        };
+
+        // Function to show the Tawk chat when the button is clicked
+        function showTawkChat() {
+            // Check if the Tawk chat widget has already been loaded
+            if (typeof Tawk_API.toggle !== "undefined") {
+                    // Maximize the chat widget
+                    Tawk_API.maximize();
+                    // Show the chat widget
+                    // Tawk_API.toggle();
+
+                    // Set waktu obrolan selesai jika user tidak membalas chat admin dalam 10 minutes (600,000 milliseconds)
+                    setTimeout(function () {
+                        endTawkChatIfNoReply();
+                    }, 600000);
+            } else {
+                // If the Tawk chat widget is not yet loaded, reload the Tawk script
+                var s1 = document.createElement("script");
+                var s0 = document.getElementsByTagName("script")[0];
+                s1.async = true;
+                s1.src = 'https://embed.tawk.to/648c8c8ecc26a871b022fe6f/1h32ga41a';
+                s1.charset = 'UTF-8';
+                s1.setAttribute('crossorigin', '*');
+                s0.parentNode.insertBefore(s1, s0);
+
+                // Add an event listener to show the chat widget after the script is loaded
+                s1.addEventListener('load', function () {
+
+                    // Maximize the chat widget
+                    // Tawk_API.maximize();
+                    // Show the chat widget
+                    // Tawk_API.toggle();
+
+                    // Set waktu obrolan selesai jika user tidak membalas chat admin dalam 10 minutes (600,000 milliseconds)
+                    setTimeout(function () {
+                    endTawkChatIfNoReply();
+                    }, 600000);
+                });
+                    
+
+                }
+            }
+
+
+            // Mengecek admin sedang online atau offline
+            function checkTawkStatus() {
+            // Check if the Tawk chat widget has already been loaded
+            if (typeof Tawk_API.getStatus !== "undefined") {
+                var pageStatus = Tawk_API.getStatus();
+
+                if (pageStatus === 'online') {
+                    // Do something for online status
+                    console.log('Tawk is online.');
+                } else if (pageStatus === 'away') {
+                    // Do something for away status
+                    console.log('Tawk is away.');
+                } else {
+                    // Do something for offline status
+                    console.log('Tawk is offline.');
+                }
+            } else {
+                // If the Tawk chat widget is not yet loaded, wait and check again
+                setTimeout(checkTawkStatus, 100);
+            }
+        }
+
+        // Call the function to check Tawk status when the widget is loaded
+        window.Tawk_API.onLoad = function () {
+            checkTawkStatus();
+        };
+
+
+
+        // Function to end the chat if there is no reply from admin
+        function endTawkChatIfNoReply() {
+            if (typeof Tawk_API.onChatMaximized !== "undefined" && typeof Tawk_API.endChat !== "undefined") {
+                var chatMaximized = Tawk_API.onChatMaximized();
+                if (chatMaximized) {
+                    Tawk_API.endChat();
+                    console.log('Chat has been ended due to no reply from admin.');
+                }
+            }
+        }
+
+        // Call the function to check Tawk status when the widget is loaded
+        window.Tawk_API.onLoad = function () {
+            checkTawkStatus();
+        };
+
+    </script>
+
   </head>
 
   <body>
@@ -96,8 +197,8 @@
         <nav class="navbar navbar-expand-lg p-0">
           <div class="container-xxl ">
             <a class="navbar-brand" href="/" title="Aradan "
-              ><img class="animate__animated animate__heartBeat animate__infinite	infinite animate__slow" src="{{ asset('assets/frontend/img/logo.svg') }}" alt="Aradan "
-            /></a>
+              ><img class="animate__animated animate__heartBeat animate__infinite	infinite animate__slow" src="{{ asset('aradan_logo.png') }}" style="width: 50px; height:50px;" alt="Aradan "
+            /> <b style="color:white;font-size:24px;" > Aradan</b> </a>
 
             <div
               class="offcanvas offcanvas-start"
@@ -151,8 +252,8 @@
                   <li class="nav-item">
                     <a class="nav-link" href="#" title="Shipping">Shipping</a>
                   </li>
-                  <li class="nav-item d-lg-none">
-                    <a class="nav-link" href="#" title="Guides">Guides</a>
+                  <li class="nav-item ">
+                    <a class="nav-link" onclick="showTawkChat()" href="#" title="Guides">Contact Us</a>
                   </li>
                   <li class="nav-item d-lg-none">
                     <a class="nav-link" href="#" title="Terms of Sale"
@@ -283,7 +384,7 @@
               {{-- dropdown image  --}}
               <div class="btn-group">
                 <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  <img src="{{ asset('user_blank.png') }}" alt="Profile Image" class="profile-image" style="border-radius: 50%; width:40px; height:40px;">
+                  <img src="{{ asset('user_blank_white.png') }}" alt="Profile Image" class="profile-image" style="border-radius: 50%; width:40px; height:40px;">
                 </button>
                 <ul class="dropdown-menu">
                   <!-- Dropdown menu items -->
@@ -508,7 +609,6 @@
     </div>
 
     <!-- CODE HERE -->
-    @yield('js')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/perfect-scrollbar@1.5.5/dist/perfect-scrollbar.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
