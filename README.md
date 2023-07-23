@@ -29,6 +29,12 @@
 ------ landing page before login
 ![aradan_red_before_login](https://github.com/aslan-asilon31/aradan_laravel_postgresql/assets/116990574/5f8be881-7ded-48c9-87b6-db9dfbe3da00)
 
+-------jika visitor belum login/register maka pada saat akan menambahkan produk ke keranjang maka sistem akan memunculkan informasi untuk login/register terlebih dahulu
+![aradan_red_modal_pop_up_for_login](https://github.com/aslan-asilon31/aradan_laravel_postgresql/assets/116990574/98887be4-9ffe-4fe8-a4db-4288b64ba71c)
+
+--- halaman setelah login dan customer telah menambahkah beberapa produk, sistem akan membedakan produk yang sudah di masukan ke keranjang dan belum
+![aradan_red_after_login_add_to_cart](https://github.com/aslan-asilon31/aradan_laravel_postgresql/assets/116990574/bf523f50-5ab7-4e6f-89df-ea7f2ae9affd)
+
 --------- contact us
 ![aradan_red_click_contact_us](https://github.com/aslan-asilon31/aradan_laravel_postgresql/assets/116990574/b621f136-3cc4-4c99-8cb7-3ece68086d83)
 
@@ -37,6 +43,7 @@
 
 -----------register page
 ![aradan_red_register](https://github.com/aslan-asilon31/aradan_laravel_postgresql/assets/116990574/33068566-5101-4355-aecb-75f57972f32d)
+
 
 ------------ dashboard admin
 

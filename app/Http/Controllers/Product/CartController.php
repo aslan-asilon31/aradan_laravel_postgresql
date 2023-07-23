@@ -9,9 +9,23 @@ class CartController extends Controller
 {
     public function cartList()
     {
+        $totalPrice = 0;
+        $itemTotalPrice = 0;
         $cartItems = \Cart::getContent();
-        // dd($cartItems);
-        return view('cart', compact('cartItems'));
+
+        foreach ($cartItems as $item) {
+            // Get the price and quantity of each item
+            $price = $item->price;
+            $quantity = $item->quantity;
+    
+            // Calculate the total price for this item
+            $itemTotalPrice = $price * $quantity;
+    
+            // Add the total price of this item to the overall total price
+            $totalPrice += $itemTotalPrice;
+        }
+
+        return view('visitors.cart', ['itemTotalPrice' => $itemTotalPrice,'totalPrice' => $totalPrice, 'cartItems' => $cartItems]);
     }
 
 

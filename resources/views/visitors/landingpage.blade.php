@@ -52,6 +52,23 @@
           </section>
           <!-- End main Banner -->
 
+          <div class="popular-picks-heading text-left ">
+            <h2
+              class="popular-picks-heading-title text-generator"
+              data-aos="fade-up"
+            >
+              Popular Picks
+            </h2>
+            <p
+              class="popular-picks-heading-text mb-0"
+              data-aos="fade-up"
+              data-aos-delay="200"
+              style="padding-bottom:35px;"
+            >
+              Our popular picks for most favorited Products
+            </p>
+          </div>
+
           <!-- Start New Product -->
           <section class="new-product-outer">
             <div
@@ -67,9 +84,9 @@
                 >
                   <div class="new-product-img-outer bg-pink position-relative">
                     <img
-                      class="new-product-img position-absolute"
+                      class="new-product-img position-absolute mb-5 "
                       src="{{ asset('/storage/products' . $product->image) }}"
-                      alt=""
+                      alt="" style="width:150px;margin-right:4px;transform: rotate(45deg);"
                     />
                   </div>
                   <div class="media-body">
@@ -83,40 +100,51 @@
                       <img src="{{ asset('assets/frontend/img/star.svg') }}" alt="" />
                     </div>
                     <p class="new-product-price">Rp {{ number_format($product->price, 0, ',', '.') }}</p>
-                    {{-- @foreach ($product->category as $ppc)
-                    <p class="new-product-text">{{ $ppc->name }}</p>
-                    @endforeach --}}
-                    {{-- <form action="{{ route('cart.store') }}" method="POST" enctype="multipart/form-data">
-                      @csrf
-                      <input type="hidden" value="{{ $product->id }}" name="id">
-                      <input type="hidden" value="{{ $product->name }}" name="name">
-                      <input type="hidden" value="{{ $pmp->price }}" name="price">
-                      <input type="hidden" value="{{ $pmp->discount }}" name="discount">
-                      <input type="hidden" value="{{ $pmp->total_price }}" name="total_price">
-                      <input type="hidden" value="{{ $product->image }}"  name="image">
-                      <input type="hidden" value="1" name="quantity">
-                      <button class="" style="background-color:#483285;color:white;"><i class="fa fa-shopping-cart"></i> Add</button> | 
-                      <a class="btn-link mb-0" href="{{ route('products.show', $product->id) }}" title="Add to Cart"
-                        > <i class="fa fa-eye"></i> Details</a> | 
-                      <a class="wishlist-product">
-                          <i class="far fa-heart"></i> Wishlist</a> | 
-                      <a class="btn-link mb-0" href="" title="Comments"
-                        > <i class="fa fa-comment"></i> Comments (12)</a> 
-                    </form> --}}
+                   
 
-                    {{-- <a href="{{ route('products.show', ['id' => $product->id]) }}" class="btn btn-primary">Detail Product</a> --}}
-
-
-
+                    {{-- Cek apakah sudah login  --}}
                     @if(auth()->check())
-                      <button class="" style="background-color:#68D391;color:white;"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-                      {{-- <button class="" style="background-color:red;color:white;"><i class="fa fa-shopping-cart"></i>delete</button> --}}
-                      <a class="btn-link mb-0" href="{{ route('product.show', $product->id) }}" title="Add to Cart"
-                        > <i class="fa fa-eye"></i> </a> | 
-                      <a class="wishlist-product">
-                          <i class="far fa-heart"></i> </a> | 
-                      <a class="btn-link mb-0" href="" title="Comments"
-                        > <i class="fa fa-comment"></i> (12)</a>
+
+                      {{-- Cek apakah sudah add to cart  --}}
+                      @if(Cart::get($product->id) == false)
+                        <form action="{{ route('cart.store') }}" method="POST" enctype="multipart/form-data">
+                          @csrf
+                          <input type="hidden" value="{{ $product->id }}" name="id">
+                          <input type="hidden" value="{{ $product->name }}" name="name">
+                          <input type="hidden" value="{{ $product->price }}" name="price">
+                          <input type="hidden" value="{{ $product->image }}"  name="image">
+                          <input type="hidden" value="1" name="quantity">
+                          <button class="px-4 py-1.5 text-white text-sm bg-blue-800 rounded" style="background-color:#68D391;color:white;">Add To Cart</button>
+                        </form>
+                        {{-- <button class="" style="background-color:#68D391;color:white;"><i class="fa fa-shopping-cart"></i>Add to cart</button> --}}
+                        {{-- <button class="" style="background-color:red;color:white;"><i class="fa fa-shopping-cart"></i>delete</button> --}}
+                        <a class="btn-link mb-0" href="{{ route('product.show', $product->id) }}" title="Add to Cart"
+                          > <i class="fa fa-eye"></i> </a> | 
+                        <a class="wishlist-product">
+                            <i class="far fa-heart"></i> </a> | 
+                        <a class="btn-link mb-0" href="" title="Comments"
+                          > <i class="fa fa-comment"></i> (12)</a>
+                      @else
+
+                        <form action="{{ route('cart.store') }}" method="POST" enctype="multipart/form-data">
+                          @csrf
+                          <input type="hidden" value="{{ $product->id }}" name="id">
+                          <input type="hidden" value="{{ $product->name }}" name="name">
+                          <input type="hidden" value="{{ $product->price }}" name="price">
+                          <input type="hidden" value="{{ $product->image }}"  name="image">
+                          <input type="hidden" value="1" name="quantity">
+                          <button class="px-4 py-1.5 text-white text-sm bg-blue-800 rounded" style="background-color:red;color:white;">Remove To Cart</button>
+                        </form>
+                        {{-- <button class="" style="background-color:#68D391;color:white;"><i class="fa fa-shopping-cart"></i>Add to cart</button> --}}
+                        {{-- <button class="" style="background-color:red;color:white;"><i class="fa fa-shopping-cart"></i>delete</button> --}}
+                        <a class="btn-link mb-0" href="{{ route('product.show', $product->id) }}" title="Add to Cart"
+                          > <i class="fa fa-eye"></i> </a> | 
+                        <a class="wishlist-product">
+                            <i class="far fa-heart"></i> </a> | 
+                        <a class="btn-link mb-0" href="" title="Comments"
+                          > <i class="fa fa-comment"></i> (12)</a>
+                      @endif
+                    
                     @else
 
                       <button class="btn btn-link mb-2 px-2 py-2 " data-bs-toggle="modal" data-bs-target="#exampleModal" id="belanjaBtn" style="background-color:#68D391;color:white;"><i class="fa fa-shopping-cart"></i>Add to cart</button>

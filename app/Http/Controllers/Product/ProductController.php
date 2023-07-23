@@ -405,5 +405,12 @@ class ProductController extends Controller
         return Excel::download(new ProductsExport, $filename);
     }
 
+    public function productList()
+    {
+        $products = Product::all();
+
+        return view('products', compact('products'));
+    }
+
 }
 

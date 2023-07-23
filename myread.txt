@@ -73,7 +73,6 @@ https://www.itsolutionstuff.com/post/how-to-get-online-users-in-laravelexample.h
 https://codeanddeploy.com/blog/laravel/step-by-step-tutorial-implementing-yajra-datatables-in-laravel-10
 
 
-
 =========================== intermediate level
 automatically back-up data every night with spatie/back-up
 
@@ -84,8 +83,6 @@ https://sangcahaya.id/backup-database-otomatis-tiap-malam-dengan-laravel-spatie-
 https://sangcahaya.id/spatie-laravel-activitylog/
 
 -----------------------------------
-
-
 
 ==========================multiple delete
 https://www.itsolutionstuff.com/post/how-to-delete-multiple-records-using-checkbox-in-laravel-5-example.html
