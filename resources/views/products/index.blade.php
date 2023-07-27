@@ -45,7 +45,7 @@
                         <th>Stock</th>
                         <th>Discount</th>
                         <th>Status</th>
-                        <th>Rating</th>
+                        {{-- <th>Rating</th> --}}
                         <th>Slug</th>
                         <th>Description</th>
                         <th>Action</th>
@@ -92,7 +92,7 @@
                 {data: 'stock', name: 'stock'},
                 {data: 'discount', name: 'discount'},
                 {data: 'status', name: 'status'},
-                {data: 'rating', name: 'rating'},
+                // {data: 'rating', name: 'rating'},
                 {data: 'slug', name: 'slug'},
                 {data: 'description', name: 'description'},
                 {

@@ -28,8 +28,7 @@
                                 <div class="divTableCol">Total</div>
                                 <div class="divTableCol">Actions</div>
                             </div>
-                @foreach ($cartItems as $item)
-                        
+                            @foreach ($cartItems as $item)
                             <div class="rowTable">
                                 <div class="divTableCol">
                                     <div class="media">
@@ -163,9 +162,14 @@
                                     <button class="px-2 py-1 text-sm  ="style="background-color:red;color:white;">Clear Carts</button>
                                 </form>
                                 <div class="divTableCol">
-                                    <form action="" method="POST">
+                                    {{-- <form action="{{ route('orders.show', $item->id) }}" method="POST">
                                         @csrf
                                         <button class="px-2 py-1 text-sm  ="style="background-color:green;color:white;">Order</button>
+                                    </form> --}}
+
+                                    <form action="{{ route('checkout') }}" method="POST">
+                                        @csrf
+                                      <button class="px-4 mt-1 py-1.5 text-sm rounded rounded shadow text-violet-100 bg-violet-500">Checkout</button>
                                     </form>
                                 </div>
                             </div>

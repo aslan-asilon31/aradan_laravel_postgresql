@@ -49,7 +49,7 @@ class ProductService
             'stock' => $data['stock'],
             'discount' => $data['discount'],
             'status' => $data['status'],
-            'rating' => $data['rating'],
+            // 'rating' => $data['rating'],
             'slug' => $data['slug'],
             'description' => $data['description'],
         ]);
@@ -95,7 +95,7 @@ class ProductService
             'stock' => $data['stock'],
             'discount' => $data['discount'],
             'status' => $data['status'],
-            'rating' => $data['rating'],
+            // 'rating' => $data['rating'],
             'slug' => $data['slug'],
             'description' => $data['description'],
         ]);

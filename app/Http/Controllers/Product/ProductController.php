@@ -265,9 +265,9 @@ class ProductController extends Controller
             
                     return $status;
                 })
-                ->addColumn('rating', function ($product) {
-                    return $product->rating ? $product->rating : 0;
-                })
+                // ->addColumn('rating', function ($product) {
+                //     return $product->rating ? $product->rating : 0;
+                // })
                 ->rawColumns(['action','category_name','status','rating'])
                 ->make(true);
         }

@@ -10,12 +10,13 @@ class Order extends Model
     use HasFactory;
 
     protected $fillable = [
-        'payment_id',
-        'order_code',
-        'grant_total',
-        'status',
-        'account_bank',
+        'user_id',
+        'user_name',
+        'product_id',
+        'product_name',
+        'payment_status',
+        'qty',
+        'total_price',
         'snap_token',
-        'slug',
     ];
 }

@@ -35,6 +35,13 @@
 --- halaman setelah login dan customer telah menambahkah beberapa produk, sistem akan membedakan produk yang sudah di masukan ke keranjang dan belum
 ![aradan_red_after_login_add_to_cart](https://github.com/aslan-asilon31/aradan_laravel_postgresql/assets/116990574/bf523f50-5ab7-4e6f-89df-ea7f2ae9affd)
 
+----- halaman invoice setelah klik tombol checkout
+![aradan_red_invoice](https://github.com/aslan-asilon31/aradan_laravel_postgresql/assets/116990574/752c0ff2-6830-4a60-894d-19f10bf1f9cc)
+
+-----  invoice payment
+![aradan_red_invoice-midtrans-show](https://github.com/aslan-asilon31/aradan_laravel_postgresql/assets/116990574/c2ae460d-39d6-43cc-b26d-04841839a30f)
+
+
 --------- contact us
 ![aradan_red_click_contact_us](https://github.com/aslan-asilon31/aradan_laravel_postgresql/assets/116990574/b621f136-3cc4-4c99-8cb7-3ece68086d83)
 

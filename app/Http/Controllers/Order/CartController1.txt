@@ -1,27 +1,25 @@
 <?php
 
-namespace App\Http\Controllers\Product;
+namespace App\Http\Controllers\Order;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Services\Midtrans\CreateSnapTokenService;
-use App\Models\Product\Product;
-use App\Models\Order\Order;
-use DB;use Carbon\Carbon;
+use App\Models\Product;
+use App\Models\Order;
+use DB;
 use Darryldecode\Cart\CartCondition;
-use Dompdf\Dompdf;
-use Illuminate\Support\Facades\View;
 
 class CartController extends Controller
 {
+    
     public function cartList()
     {
-        $totalPrice = 0;
         $cartItems = \Cart::getContent();
         // dd($cartItems);
         
         $cartCount = $cartItems->count();
-        return view('visitors/cart', compact('cartItems','totalPrice','cartCount'));
+        return view('cart', compact('cartItems','cartCount'));
     }
 
 
@@ -120,19 +118,17 @@ class CartController extends Controller
         return redirect()->route('cart.list');
     }
 
-    public function checkout(Request $request)
-    {
+    public function checkout(Request $request){
 
-        $totalPrice = 0;
+        // dd($request);
         $cartItems = \Cart::getContent();
         $cartCount = $cartItems->count();
-        
-        $date = Carbon::now();
-        $formattedDate = $date->format('l, F d, Y');
+        // dd($cartItems);
         
         
         $request->request->add(['total_price' => $request->qty * 100000, 'status' => 'Unpaid']);
         // $order = Order::all();
+        // dd($order);
 
         // Set merchant server key 
         \Midtrans\Config::$serverKey = config('midtrans.server_key');
@@ -143,7 +139,7 @@ class CartController extends Controller
         //set transaction for credit card to true
         \Midtrans\Config::$is3ds = true;
 
-
+        // dd($order->id);
             // Calculate the total gross amount from the cart items
         $totalGrossAmount = 0;
         foreach ($cartItems as $item) {
@@ -169,11 +165,14 @@ class CartController extends Controller
         );
 
         foreach ($cartItems as $item) {
+            // Add each item in the cart to the item_details array
             $params['item_details'][] = [
                 'id' => $item->id,
                 'name' => $item->name,
                 'price' => $item->price,
                 'quantity' => $item->quantity,
+                // If you have any attributes for the item, you can add them here
+                // 'attributes' => $item->attributes,
             ];
         }
 
@@ -184,117 +183,6 @@ class CartController extends Controller
         return view('visitors.checkout', [
             'snapToken' => $snapToken,
             'order' => $order,
-            'cartItems' => $cartItems,
-            'formattedDate' => $formattedDate,
-            'totalPrice' => $totalPrice,
-            'totalGrossAmount' => $totalGrossAmount,
         ]);
-    }
-
-    public function invoice_print(){
-        
-        $totalPrice = 0;
-        $cartItems = \Cart::getContent();
-        $cartCount = $cartItems->count();
-        
-        $date = Carbon::now();
-        $formattedDate = $date->format('l, F d, Y');
-
-        $request->request->add(['total_price' => $request->qty * 100000, 'status' => 'Unpaid']);
-        // $order = Order::all();
-
-        // Set merchant server key 
-        \Midtrans\Config::$serverKey = config('midtrans.server_key');
-        // set to development/sandbox environtment (default). set to true for production environtment
-        \Midtrans\Config::$isProduction = false;
-        //set sanitization on (default)
-        \Midtrans\Config::$isSanitized = true; 
-        //set transaction for credit card to true
-        \Midtrans\Config::$is3ds = true;
-
-
-            // Calculate the total gross amount from the cart items
-        $totalGrossAmount = 0;
-        foreach ($cartItems as $item) {
-            $totalGrossAmount += ($item->price * $item->quantity);
-        }
-
-        // Generate a unique order ID (you can use any unique identifier here)
-        $orderId = $item->id; // Example: ORDER_1630082133
-
-        // Now create the $params array with the updated transaction_details
-        $params = array(
-            'transaction_details' => array(
-                'order_id' => $orderId,
-                'gross_amount' => $totalGrossAmount,
-            ),
-            'customer_details' => array(
-                'first_name' => 'aslan',
-                // Add other customer details like email and phone if needed.
-                // 'email' => $request->email,
-                // 'phone' => $request->phone,
-            ),
-            'item_details' => array(),
-        );
-
-        foreach ($cartItems as $item) {
-            $params['item_details'][] = [
-                'id' => $item->id,
-                'name' => $item->name,
-                'price' => $item->price,
-                'quantity' => $item->quantity,
-            ];
-        }
-
-        $snapToken = \Midtrans\Snap::getSnapToken($params);
-        $order = Order::where('id', $orderId)->get();
-        
-        return view('visitors.invoice-print', [
-            'snapToken' => $snapToken,
-            'order' => $order,
-            'cartItems' => $cartItems,
-            'formattedDate' => $formattedDate,
-            'totalPrice' => $totalPrice,
-            'totalGrossAmount' => $totalGrossAmount,
-        ]);
-    }
-
-    public function generatePDF()
-    {
-                
-        $totalPrice = 0;
-        $cartItems = \Cart::getContent();
-        $cartCount = $cartItems->count();
-        
-        $date = Carbon::now();
-        $formattedDate = $date->format('l, F d, Y');
-
-        // Get the content from the Blade view
-        $pdfContent = View::make('visitors.invoice-print')
-        ->with('totalPrice', $totalPrice)
-        ->with('cartItems', $cartItems)
-        ->with('formattedDate', $formattedDate)
-        ->render();
-
-        // Create a new DomPDF instance
-        $pdf = new Dompdf();
-
-        // Load the PDF content
-        $pdf->loadHtml($pdfContent);
-
-        // (Optional) Set paper size and orientation
-        $pdf->setPaper('A4', 'portrait');
-
-        // Render the PDF
-        $pdf->render();
-
-        // Generate a filename for the PDF
-        $filename = 'invoice'.now().'.pdf';
-
-        // Optionally, you can save the PDF to a specific location on the server
-        // $pdf->save(storage_path('pdfs/' . $filename));
-
-        // Stream the PDF to the browser
-        return $pdf->stream($filename);
     }
 }

@@ -13,16 +13,14 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->integer('payment_id')->nullable();
-            $table->string('product_id')->nullable();     
-            $table->string('user_id')->nullable();     
-            $table->string('order_code')->nullable();     
-            $table->integer('grant_total')->nullable();     
-            $table->string('status')->nullable();
-            $table->string('account_bank')->nullable();
-            $table->string('shipping')->nullable();
+            $table->integer('user_id')->nullable();
+            $table->string('user_name')->nullable();
+            $table->integer('product_id')->nullable();
+            $table->string('product_name')->nullable();
+            $table->string('payment_status')->default('waiting-for-payment');
+            $table->integer('qty')->nullable();
+            $table->integer('total_price')->nullable();
             $table->string('snap_token', 36)->nullable();
-            $table->string('slug')->nullable();
             $table->timestamps();
         });
     }

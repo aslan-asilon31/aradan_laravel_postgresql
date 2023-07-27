@@ -127,7 +127,7 @@
                               @enderror
                       </div>
   
-                      <div class="form-group">
+                      {{-- <div class="form-group">
                           <label class="font-weight-bold">Rating</label>
                               <input type="integer" value="0" readonly class="form-control @error('rating') is-invalid @enderror" name="rating"  placeholder="0">
                           
@@ -137,7 +137,7 @@
                                       {{ $message }}
                                   </div>
                               @enderror
-                      </div>
+                      </div> --}}
   
                       <div class="form-group">
                           <label class="font-weight-bold">Slug</label>
