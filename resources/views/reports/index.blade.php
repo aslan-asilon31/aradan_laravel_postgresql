@@ -1,9 +1,11 @@
 @extends('adminlte::page')
 
-@section('title', 'Order')
+@section('title', 'Report')
 
 @section('content_header')
-    <h1>Order</h1>
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <h1>Report</h1>
 @stop
 
 @section('content')
@@ -11,6 +13,16 @@
 <div class="card">
     <div class="card-header">
         <div class="card-tools">
+            <div class="dropdown btn-group">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="orderFilterDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Filter Reports
+                </button>
+                <div class="dropdown-menu" aria-labelledby="orderFilterDropdown">
+                    <a class="dropdown-item filter-option" href="#" data-filter="today">Report Today</a>
+                    <a class="dropdown-item filter-option" href="#" data-filter="this_week">Report This Week</a>
+                    <a class="dropdown-item filter-option" href="#" data-filter="this_month">Report This Month</a>
+                </div>
+            </div>
             <div class="btn-group">
                 <input type="file" id="fileUploader" style="display: none;">
             </div>
@@ -40,6 +52,7 @@
                         <th>Qty</th>
                         <th>Total Price</th>
                         <th>Snap Token</th>
+                        <th>Created At</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -74,7 +87,7 @@
                             @endif
 
                             <div class="form-group">
-{{-- 
+                            {{-- 
                                 @csrf
                                 <input type="file" name="file"
                                       class="form-control">
@@ -126,12 +139,26 @@
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+
+
+
+
+{{-- Filter Report per day, week, month : --}}
 <script type="text/javascript">
+
+    // Set the CSRF token globally for all AJAX requests
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    
     $(function () {
         var table = $('.yajra-datatable').DataTable({
             processing: true,
             serverSide: true,
-            ajax: "{{ url('orders') }}",
+            ajax: "{{ url('reports') }}",
             columns: [
                 {data: 'DT_RowIndex', name: 'DT_RowIndex'},
                 {data: 'user_id', name: 'user_id'},
@@ -142,6 +169,7 @@
                 {data: 'qty', name: 'qty'},
                 {data: 'total_price', name: 'total_price'},
                 {data: 'snap_token', name: 'snap_token'},
+                {data: 'created_at', name: 'created_at'},
                 {
                     data: 'action',
                     name: 'action',
@@ -150,6 +178,30 @@
                 },
             ]
         });
+
+        // Handle the filter option selection
+        $('.filter-option').on('click', function () {
+            var filterValue = $(this).data('filter');
+
+            // Make an AJAX request to the filter endpoint
+            $.ajax({
+                type: "POST",
+                url: "{{ url('reports/filter') }}",
+                data: { filter: filterValue },
+                dataType: "json",
+                beforeSend: function (xhr) {
+                    // Include the CSRF token in the request headers
+                    xhr.setRequestHeader('X-CSRF-TOKEN', csrfToken);
+                },
+                success: function (data) {
+                    // Clear the existing DataTable data and reload with the filtered data
+                    table.clear().draw();
+                    table.rows.add(data.data).draw();
+                }
+            });
+        });
     });
 </script>
+{{-- End Filter Report per day, week, month : --}}
+
 @stop

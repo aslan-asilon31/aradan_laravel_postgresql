@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Order\OrderController;
+use App\Http\Controllers\Report\ReportController;
 
 
 /*
@@ -16,10 +16,6 @@ use App\Http\Controllers\Order\OrderController;
 */
 
 Route::group(['middleware' => ['auth']], function() {
-
-
-    Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
-    Route::post('/orders/{order}', [OrderController::class, 'show'])->name('orders.show');
-
-    
+    Route::get('/reports', [ReportController::class, 'index'])->name('reports.index');
+    Route::post('/reports/filter', [ReportController::class, 'filterReports'])->name('reports.filters');
 });

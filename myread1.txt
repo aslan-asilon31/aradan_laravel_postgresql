@@ -65,3 +65,29 @@ source description account :https://www.zenius.net/blog/penggolongan-akun-dalam-
 - Export Import (Excel/PDF/CSV) using laravel excel
 - bulk delete
 - last seen user
+
+
+
+==================
+aplikasi buatan saya Aradan app. fitur - fitur yang aradan app miliki seperti :
+pencarian produk, katalog produk, halaman detail, keranjang belanja,
+pengelolaan akun pengguna, proses pembayaran, pegirimiman produk,
+pelacakan pesanan, ulasan dan rating, promo dan diskon, nofitikasi,
+integrasi media sosial, laporan dan analisis, wishlist, sistem keamanan,
+sistem penilaian toko, live chat, dashboard analytics.
+
+
+Fitur-fitur dengan menggunakan Artificial intelligence yang sedang saya kembangkan kedalam Aradan app.
+1. Rekomendasi produk berbasis AI : untuk menganalisis data perilaku pengguna, seperti riwayat pembelian, penelusuran, dan preferensi, untuk memberikan 
+rekomendasi produk yang relevan dan disesuaikan dengan setiap pengguna.
+2. Personalisasi konten :
+3. Pencarian lanjutan
+4. Chatbot Pelanggan
+5. Analisis sentimen
+6.Pengenalan gambar
+7. penyesuaian harga dinamis
+8. Pengelolaan stok otomatis
+9. deteksi dan pencegahan Fraud
+10. Analisis data dan Insight
+11. Pengiriman otomatis : Penggunaan AI dalam sistem pengiriman dapat membantu dalam mengoptimalkan 
+rute pengiriman dan menyesuaikan jadwal pengiriman berdasarkan data lalu lintas dan permintaan.

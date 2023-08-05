@@ -220,10 +220,10 @@ class ProductController extends Controller
                 ->addColumn('action', function ($product) {
                     return '<td class="text-center">
                                 <form onsubmit="return confirm(\'Apakah Anda Yakin ?\');" action="' . route('product.destroy', $product->id) . '" method="POST">
-                                    <a href="' . route('product.edit', $product->id) . '" class="btn btn-sm btn-primary">EDIT</a>
+                                    <a href="' . route('product.edit', $product->id) . '" class="btn btn-sm btn-primary"> <i class="fa fa-edit"></i> </a>
                                     ' . csrf_field() . '
                                     ' . method_field('DELETE') . '
-                                    <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>
+                                    <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
                                 </form>
                             </td>';
                 })
@@ -232,7 +232,6 @@ class ProductController extends Controller
                 })
                 ->addColumn('status', function ($product) {
                     $status = '';
-            
                     switch ($product->status) {
                         case 'out-of-stock':
                             $status = '<span class="badge badge-danger">Out of Stock</span>';

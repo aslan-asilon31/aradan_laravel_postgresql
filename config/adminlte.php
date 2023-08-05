@@ -331,7 +331,7 @@ return [
         ],
         [
             'text' => 'report',
-            'url'  => 'report',
+            'url'  => '/reports',
             'icon' => 'fas fa-fw fa-file',
             // 'can'   => 'report-list'
         ],
